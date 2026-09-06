@@ -22,3 +22,10 @@ Yellow/orange now dominate the homepage, capability section, page introductions 
 ## Verification boundary
 
 Generated page/link/asset checks, CSS parsing and representative contrast calculations support this update. Full browser/device, text-enlargement and assistive-technology review remain staging checks. The WordPress theme is 0.2.1; Core remains 0.1.0. No enquiry or legacy admin workflow behavior was changed by the colour update.
+
+
+## Approved interlocking S logo — theme 0.3.1
+
+The approved transparent logo combines a crimson interlocking S, warm orange and apple-yellow segments, and a charcoal SIT Technology wordmark. The same original PNG is used in the header and footer. CSS frames its transparent clear space without altering the image or distorting its proportions; widths adapt for smaller screens. Home links retain accessible names and keyboard focus indicators.
+
+The browser icon displays the symbol through a square SVG viewport containing the unchanged image. WordPress uses this as a theme fallback when no site icon is set. An independently configured WordPress Site Icon remains under the administrator's control. Both assets are bundled and self-hosted; no image service is required.

@@ -8,7 +8,7 @@ Public Team profiles and case studies are editorial content. Staff login account
 
 | Module | Responsibilities | Current state |
 |---|---|---|
-| SIT Technology theme | 25 public pages, responsive design, discovery tools, project form | Implemented; theme 0.3.0 |
+| SIT Technology theme | 25 public pages, responsive design, discovery tools, project form | Implemented; theme 0.3.1 |
 | SIT Core | Four typed request journeys, filtered request desk, assignment, controlled transitions, version checks, events, durable notifications and retention | Implemented; Core 0.2.0; full host integration pending |
 | Operations extension | Request-scoped messages; confirmed scheduling state; qualification and quotes | Planned; consultation, software brief and team intake is now in Core |
 | Recruitment extension | Jobs, job applications, open talent registration, private CVs, screening and applicant communications | Planned |

@@ -33,3 +33,8 @@ The acceptance checklist in [installation.md](installation.md) must be completed
 ## Earlier design releases
 
 Theme 0.2.0 added discovery tools and the consulting-site redesign. Theme 0.2.1 introduced dominant apple-yellow/orange surfaces and the recoloured original bridge artwork. Their structural, interaction, CSS and representative colour-contrast checks were recorded during implementation. Those checks did not establish browser or accessibility conformance; Core behavior was unchanged until this 0.2.0 plugin release.
+
+
+## Logo replacement — theme 0.3.1
+
+Replaced the shared header/footer wordmark with the approved transparent artwork and added a matching symbol favicon. Checked all generated pages, logo references and accessible names; responsive frame dimensions and CSS syntax; modified PHP syntax; and theme archive integrity. Core 0.2.0 and request workflows are unchanged. No browser/device visual testing was performed for this asset-only update.

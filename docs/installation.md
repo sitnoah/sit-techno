@@ -5,7 +5,7 @@ This is a first implementation, not a production-certified release. Use an isola
 ## Install the packages
 
 1. Use a single-site WordPress installation with PHP 8.1 or later and MySQL/MariaDB with InnoDB. The declared WordPress minimum is 6.6. Keep a database and file backup before changing an existing site.
-2. In **Appearance → Themes → Add New → Upload Theme**, upload `sit-technology-theme-0.3.0.zip` and activate it.
+2. In **Appearance → Themes → Add New → Upload Theme**, upload `sit-technology-theme-0.3.1.zip` and activate it.
 3. In **Plugins → Add New → Upload Plugin**, upload `sit-technology-core-0.2.0.zip` and activate it. Core does not support multisite in this release.
 4. Open **Appearance → SIT Site Setup**. On a fresh installation, choose **Create starter pages**. This creates and publishes the starter pages and selects Home as the front page. Existing matching paths are preserved by default. To upgrade an earlier SIT starter design on staging, select **Apply the latest design to existing SIT starter pages**. This replaces content only on pages marked as SIT starters and requests a WordPress revision first. Back up any editorial changes before selecting it.
 5. In **Settings → Permalinks**, select a pretty-permalink structure such as Post name and save it. The designed navigation expects these paths. Verify all service and insight child pages.
@@ -17,7 +17,7 @@ Do not upload the source folder or Core plugin as a theme. The theme installer h
 
 ## Upgrade from Core 0.1.0
 
-Back up and rehearse on a copy of the database. Install Core 0.2.0 and theme 0.3.0 together. If WordPress keeps the plugin active during replacement, use the administrator notice **Update SIT request database**. Intake, staff mutations and scheduled work pause until the schema update succeeds. Activation also runs the upgrade. Existing rows keep their references, timestamps, status, owner and retry hashes, and appear as General enquiries with version 1 and empty extra details. No legacy-system data is imported. Existing settings are preserved: previously enabled intake resumes after a successful upgrade; a new installation stays disabled until configured.
+Back up and rehearse on a copy of the database. Install Core 0.2.0 and theme 0.3.1 together. If WordPress keeps the plugin active during replacement, use the administrator notice **Update SIT request database**. Intake, staff mutations and scheduled work pause until the schema update succeeds. Activation also runs the upgrade. Existing rows keep their references, timestamps, status, owner and retry hashes, and appear as General enquiries with version 1 and empty extra details. No legacy-system data is imported. Existing settings are preserved: previously enabled intake resumes after a successful upgrade; a new installation stays disabled until configured.
 
 The upgraded request form is a theme template and updates without refreshing editorial Pages. Review the expanded privacy notice separately. Use the starter refresh only if you intend to replace existing SIT starter copy. The new theme keeps intake closed with Core older than 0.2.0 to prevent typed details being discarded.
 

@@ -6,7 +6,7 @@ A UK-headquartered technology consultancy with engineering talent in Africa, inc
 
 ## Packages
 
-- **SIT Technology theme 0.3.0:** 25 public pages, responsive navigation and search, nine services, eight-sector explorer, AI project planner, technology toolkit, delivery assurance and printable capabilities.
+- **SIT Technology theme 0.3.1:** 25 public pages, responsive navigation and search, nine services, eight-sector explorer, AI project planner, technology toolkit, delivery assurance and printable capabilities.
 - **SIT Core 0.2.0:** four typed public request journeys, a private staff desk with type/status/owner filters, controlled transitions, versioned assignment updates, audit events, notification outbox, retention and privacy hooks.
 
 The static preview form is a demonstration. Live WordPress enquiries are disabled until configured. The theme works without Core. This build does not yet replace all scheduling, recruitment or administrative workflows; see the migration plan.

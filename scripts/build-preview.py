@@ -13,11 +13,11 @@ def resolve(s):
  s=re.sub(r'\{\{asset:(.*?)\}\}',lambda m:'/assets/'+m[1],s)
  return s.replace('{{year}}',str(datetime.now(timezone.utc).year))
 def document(title,description,body):
- return '<!doctype html>\n<html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>'+html.escape(title)+' | SIT Technology</title><meta name="description" content="'+html.escape(description,quote=True)+'"><meta name="theme-color" content="#f4d63b"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/site.css"><link rel="stylesheet" href="/assets/redesign.css"><script src="/assets/site.js" defer></script><script src="/assets/discovery.js" defer></script></head><body>'+resolve(header)+'<main id="main">'+resolve(body)+'</main>'+resolve(footer)+'</body></html>'
+ return '<!doctype html>\n<html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>'+html.escape(title)+' | SIT Technology</title><meta name="description" content="'+html.escape(description,quote=True)+'"><meta name="theme-color" content="#f4d63b"><link rel="icon" href="/assets/sit-technology-icon.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/site.css"><link rel="stylesheet" href="/assets/redesign.css"><script src="/assets/site.js" defer></script><script src="/assets/discovery.js" defer></script></head><body>'+resolve(header)+'<main id="main">'+resolve(body)+'</main>'+resolve(footer)+'</body></html>'
 for slug,p in source.items():
  dest=out/slug/'index.html';dest.parent.mkdir(parents=True,exist_ok=True);dest.write_text(document(p['title'],p['description'],p['html']))
 (out/'404.html').write_text(document('Page not found','The requested page could not be found.','<section class="wrap error-page"><p class="eyebrow">404 / A DIFFERENT DIRECTION</p><h1>Let’s get you<br>back on track.</h1><p>We couldn’t find that page.</p><a class="button" href="{{url:}}">Back to home ↗</a></section>'))
 shutil.copytree(theme/'assets',out/'assets',dirs_exist_ok=True)
-(out/'favicon.svg').write_text('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#b20d2f"/><text x="10" y="43" font-family="Arial,sans-serif" font-size="34" font-weight="700" fill="white">sit</text></svg>')
+(out/'favicon.svg').unlink(missing_ok=True)
 (out/'robots.txt').write_text('User-agent: *\nDisallow: /\n')
 print(f'Built {len(source)} pages plus a 404; shared theme CSS, JS and asset.')

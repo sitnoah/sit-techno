@@ -1,6 +1,6 @@
 <?php
 if (!defined('ABSPATH')) { exit; }
-define('SIT_THEME_VERSION', '0.3.0');
+define('SIT_THEME_VERSION', '0.3.1');
 add_action('after_setup_theme', function () {
     add_theme_support('title-tag');
     add_theme_support('post-thumbnails');
@@ -52,6 +52,7 @@ add_action('wp_head', function () {
         if ($description) { echo '<meta name="description" content="' . esc_attr($description) . '">'; }
     }
     echo '<meta name="theme-color" content="#f4d63b">';
+    if (!has_site_icon()) { echo '<link rel="icon" type="image/svg+xml" href="' . esc_url(get_template_directory_uri() . '/assets/sit-technology-icon.svg') . '">'; }
 }, 2);
 // Reusable page sections remain in the theme; editable page content is created only on an explicit admin action.
 add_action('admin_menu', function () { add_theme_page('SIT Site Setup', 'SIT Site Setup', 'manage_options', 'sit-setup', 'sit_theme_setup_screen'); });
