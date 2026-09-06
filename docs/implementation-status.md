@@ -1,4 +1,4 @@
-# Theme 0.2.1 / Core 0.1.0 — feature inventory
+# Theme 0.3.0 / Core 0.2.0 — feature inventory
 
 ## Implemented
 
@@ -16,14 +16,14 @@
 | Technology toolkit | Four groups of languages, frameworks and platforms; capability confirmation and no partnership implication |
 | Delivery assurance | Six practical working-standard topics; no certification claims |
 | Company capabilities | Printable company overview and native print / save-as-PDF action |
-| Enquiry UI | Three steps, required fields, native input constraints, choice controls, service preselection, budget and timeline, consent, review, retry, success reference and reset |
+| Request UI | Four request choices; conditional consultation, product and team fields; three steps; type/service/goal deep links; required fields; review; consent; retry; success reference; reset; no irrelevant-field submission or edits during sending |
 | Navigation | Grouped Expertise menu, local site-search dialog, mobile disclosure menu, Escape-to-close, current-page indicator, skip link, footer links, real 404 page |
 | Accessibility foundations | Semantic landmarks, one H1 per page, keyboard controls, labels, focus styles, live status messaging and reduced-motion support |
 | WordPress theme | Installable theme; editor styles; theme.json; editable starter Pages; custom primary menu; title/description metadata; guarded setup and opt-in refresh of SIT starter pages; four allowlisted interactive component shortcodes; shared assets |
 | Private intake | Strict scalar/length/enum validation, origin check, signed expiring token, honeypot, atomic rate counter, unique idempotency hash and no public enquiry retrieval |
-| Private staff inbox | Paginated list, status filter, enquiry details, assignment, status editing, optimistic state comparison and lifecycle audit events |
+| Private request desk | Apple-gold admin header; actual status counts; type/status/owner filters; reference and organisation search; pagination; request details; eligible staff assignment; server-controlled transitions; row version comparison; transactional lifecycle events |
 | Notification outbox | Transactional enqueue, scheduled worker, atomic claims, retry/backoff, failed state, mail transport acceptance state |
-| Privacy operations | Explicit activation settings, no automatic marketing opt-in, retention cleanup, WordPress privacy exporter and eraser, data-preserving uninstall |
+| Upgrade and privacy | Additive, protected schema upgrade preserving old records; intake/worker pause until current schema; type-aware export; explicit activation settings, no automatic marketing opt-in, retention cleanup, WordPress privacy exporter and eraser, data-preserving uninstall |
 | Engineering handoff | Strategy, legacy audit, architecture, installation guide, release status, boundary tests, DOM interaction tests, preview validator, package script and GitHub Actions validation workflow |
 
 The private preview does not send enquiries. The WordPress endpoint is implemented but disabled until configured. The theme remains usable without the Core plugin.
@@ -34,7 +34,7 @@ The public source repository is `sitnoah/sit-techno`; confidential legacy audit 
 
 | Next capability | What remains |
 |---|---|
-| Complete legacy workflow replacement | See the migration blueprint: consultation/pricing/team requests, recruitment, protected CVs, request-scoped discussions, content modules and data migration remain. |
+| Complete legacy workflow replacement | See the migration blueprint: booking confirmation, quotes, recruitment, protected CVs, request-scoped discussions, content modules and data migration remain. Request intake for consultations, software briefs and teams is implemented. |
 | Production WordPress deployment | Select a host; install; run the staging acceptance checks; configure domain, TLS, backups, scheduling and mail. |
 | Full Site Editing | Current theme is a classic theme with editor styling; a custom block library and FSE templates are a later enhancement. |
 | Live scheduling | Add an approved calendar provider and real availability. No decorative booking button is presented. |

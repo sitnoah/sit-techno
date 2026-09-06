@@ -5,24 +5,32 @@ This is a first implementation, not a production-certified release. Use an isola
 ## Install the packages
 
 1. Use a single-site WordPress installation with PHP 8.1 or later and MySQL/MariaDB with InnoDB. The declared WordPress minimum is 6.6. Keep a database and file backup before changing an existing site.
-2. In **Appearance → Themes → Add New → Upload Theme**, upload `sit-technology-theme-0.2.1.zip` and activate it.
-3. In **Plugins → Add New → Upload Plugin**, upload `sit-technology-core-0.1.0.zip` and activate it. Core does not support multisite in this release.
+2. In **Appearance → Themes → Add New → Upload Theme**, upload `sit-technology-theme-0.3.0.zip` and activate it.
+3. In **Plugins → Add New → Upload Plugin**, upload `sit-technology-core-0.2.0.zip` and activate it. Core does not support multisite in this release.
 4. Open **Appearance → SIT Site Setup**. On a fresh installation, choose **Create starter pages**. This creates and publishes the starter pages and selects Home as the front page. Existing matching paths are preserved by default. To upgrade an earlier SIT starter design on staging, select **Apply the latest design to existing SIT starter pages**. This replaces content only on pages marked as SIT starters and requests a WordPress revision first. Back up any editorial changes before selecting it.
 5. In **Settings → Permalinks**, select a pretty-permalink structure such as Post name and save it. The designed navigation expects these paths. Verify all service and insight child pages.
 6. Edit content under **Pages**. The starter uses HTML sections; preserve their classes and structure when editing layout. Keep the `[sit_component ...]` shortcodes intact: they render the ambition, service, industry and AI planner controls from theme templates. The enquiry form itself is also kept in the theme template. Assign a menu under **Appearance → Menus** if you want to replace the default primary navigation.
 7. Replace the working privacy page with the reviewed company notice. Add verified business contact details, retention, processors and relevant cross-border arrangements.
-8. Under **SIT Enquiries → Settings**, set an authorised team mailbox and an agreed retention period, acknowledge the reviewed notice and enable enquiries only after completing staging tests.
+8. Under **SIT Requests → Settings**, set an authorised team mailbox and an agreed retention period, acknowledge the reviewed notice and enable enquiries only after completing staging tests.
 
 Do not upload the source folder or Core plugin as a theme. The theme installer has `sit-technology/style.css` at its root; the plugin installer has `sit-technology-core/sit-technology-core.php`.
+
+## Upgrade from Core 0.1.0
+
+Back up and rehearse on a copy of the database. Install Core 0.2.0 and theme 0.3.0 together. If WordPress keeps the plugin active during replacement, use the administrator notice **Update SIT request database**. Intake, staff mutations and scheduled work pause until the schema update succeeds. Activation also runs the upgrade. Existing rows keep their references, timestamps, status, owner and retry hashes, and appear as General enquiries with version 1 and empty extra details. No legacy-system data is imported. Existing settings are preserved: previously enabled intake resumes after a successful upgrade; a new installation stays disabled until configured.
+
+The upgraded request form is a theme template and updates without refreshing editorial Pages. Review the expanded privacy notice separately. Use the starter refresh only if you intend to replace existing SIT starter copy. The new theme keeps intake closed with Core older than 0.2.0 to prevent typed details being discarded.
 
 ## Staging acceptance checks
 
 - Activate the theme with Core disabled: public pages must work and the form must explain that enquiries are not open.
 - Activate Core: confirm all four tables use InnoDB and the enquiry capability is granted only to the intended staff roles.
-- Submit a valid sample enquiry on the configured same-origin HTTPS site. Confirm one enquiry, one initial event and one outbox record are committed.
+- Submit a valid sample for each of the four request types on the configured same-origin HTTPS site. Confirm one enquiry, one initial event and one outbox record are committed.
+- On an upgraded database, compare existing record counts/references/status/assignment, retry an old untyped payload and verify the same reference. Repeat the upgrade and verify it does not duplicate or delete records. Confirm failed schema verification leaves intake paused.
+- Test consultation time-zone validation, required team roles, type changes, hidden-field exclusion and privacy export of additional details.
 - Retry the same request/key and confirm the same reference; alter the payload with the same key and confirm conflict. Exercise concurrent identical requests.
 - Submit missing/invalid fields, array values, unsupported options, excessive payloads, a foreign origin, stale/tampered tokens and more than the rate limit. Confirm no unintended records and no personal data in public responses.
-- Sign in as a content editor or subscriber and verify that enquiry pages/actions are denied. Test status/assignee changes from two simultaneous authorised sessions.
+- Sign in as a content editor or subscriber and verify that enquiry pages/actions are denied. Test status/assignee changes from two simultaneous authorised sessions, stale versions, forbidden status jumps, closed-request reopening and revoked assignees. Check combined filters and pagination.
 - Configure a real mail transport. Verify one sample notification reaches the intended team inbox. Simulate transport failure and confirm retry and final failure reporting. Verify that the message contains no prospect contact or project content.
 - Exercise the WordPress verified personal-data export and erasure workflows. Confirm related event/outbox data is removed during erasure.
 - Configure the host’s real scheduler to run due WordPress events every five minutes. Confirm notification processing and the agreed retention cleanup. Review backup retention separately.

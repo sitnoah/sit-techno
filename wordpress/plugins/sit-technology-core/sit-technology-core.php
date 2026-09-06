@@ -1,8 +1,8 @@
 <?php
 /**
  * Plugin Name: SIT Technology Core
- * Description: Private project enquiries, validation, administration, audit events and a notification outbox for SIT Technology.
- * Version: 0.1.0
+ * Description: Private business requests, validation, administration, audit events and a notification outbox for SIT Technology.
+ * Version: 0.2.0
  * Requires at least: 6.6
  * Requires PHP: 8.1
  * Author: SIT Technology
@@ -10,8 +10,9 @@
  * Text Domain: sit-technology-core
  */
 if (!defined('ABSPATH')) { exit; }
-define('SIT_CORE_VERSION', '0.1.0');
+define('SIT_CORE_VERSION', '0.2.0');
 require_once __DIR__ . '/includes/storage.php';
+require_once __DIR__ . '/includes/requests.php';
 require_once __DIR__ . '/includes/intake.php';
 require_once __DIR__ . '/includes/admin.php';
 require_once __DIR__ . '/includes/workers.php';
@@ -22,5 +23,5 @@ add_filter('cron_schedules', function ($s) { $s['sit_five_minutes'] = array('int
 add_action('sit_core_tick', 'sit_core_worker');
 function sit_core_ready() {
     $s = get_option('sit_core_settings', array());
-    return !empty($s['enabled']) && is_email($s['notify_to'] ?? '') && !empty($s['privacy_reviewed']) && (int) ($s['retention_days'] ?? 0) > 0;
+    return get_option('sit_core_schema') === SIT_CORE_VERSION && !empty($s['enabled']) && is_email($s['notify_to'] ?? '') && !empty($s['privacy_reviewed']) && (int) ($s['retention_days'] ?? 0) > 0;
 }

@@ -50,7 +50,7 @@ The `sit-technology-core` plugin owns all business data. Changing themes or deac
 
 | Table suffix | Contents | Access |
 |---|---|---|
-| `sit_enquiries` | Reference, hashed idempotency key, payload hash, contact/project fields, consent timestamp, status, assignee and timestamps | Staff capability only |
+| `sit_enquiries` | Reference, hashed idempotency key, payload hash, contact/project fields, immutable request type, validated detail JSON, consent timestamp, status, assignee, row version and timestamps | Staff capability only |
 | `sit_events` | Enquiry lifecycle event, actor and timestamp | Staff capability only |
 | `sit_outbox` | Notification state, attempts, availability and worker lease | Staff inbox status; scheduled worker |
 | `sit_rates` | Salted connection-address/time-bucket hash and counter | Internal only; expired buckets deleted |
@@ -71,9 +71,15 @@ Repeated submissions with the same UUID and normalised payload return the existi
 
 ### Staff workflow
 
-New → Reviewing → Proposal → Closed. An enquiry can be assigned to an authorised staff member. Updates use a row lock and compare the previous status and assignee to avoid silently overwriting another staff member’s changes. Audit events are recorded inside the same transaction.
+The unified desk handles General enquiry, Consultation, Software project and Dedicated team requests. Its counts use actual stored data; filters combine request type, status, assigned-to-me/unassigned and reference/organisation search. Requests enter New and progress through controlled review, waiting, proposal, agreed and closed states. See [request-workflows.md](request-workflows.md) for allowed transitions. Updates require an eligible assignee, lock the row and compare a monotonic version before changing it. The version and audit event commit with the change. All staff holding the request capability can access all requests; assignment filters are workflow aids, not record-level permissions.
 
 Only administrators receive the enquiry capability at activation. Grant it to an intentionally selected role through the hosting team’s normal role-management process. Content editors do not receive it automatically.
+
+### Upgrade and typed payloads
+
+Core 0.2.0 adds request type, detail JSON and a version counter to the existing enquiry table. The administrator-controlled upgrade verifies InnoDB and required new columns before recording the schema version. Existing rows become General enquiries through database defaults; no records or settings are replaced. A schema mismatch pauses intake, the request desk and workers. Theme 0.3.0 requires Core 0.2.0 or newer for live intake.
+
+Typed requests carry flat, allowlisted fields over the existing endpoint. The server validates type-specific values and serialises only those fields into ordered detail JSON. It rejects unknown keys, including status/assignee injection and fields belonging to another type. Older untyped payloads retain the exact original canonical representation so their idempotency hashes still match. WordPress privacy exports include the request type and known detail fields; erasure and retention cover the same record and its linked events/outbox.
 
 ### Notifications and retention
 
@@ -85,7 +91,7 @@ Retention is an explicit administrator setting and applies to all statuses. A fi
 
 ### Integration roadmap
 
-Zoho Bigin should be a downstream projection of the WordPress enquiry, using an authenticated server-side adapter, a separate durable outbox, remote record IDs, retry/backoff and reconciliation. No Bigin synchronisation is implemented in 0.1.0. Do not expose Bigin credentials in theme JavaScript.
+Zoho Bigin should be a downstream projection of the WordPress enquiry, using an authenticated server-side adapter, a separate durable outbox, remote record IDs, retry/backoff and reconciliation. No Bigin synchronisation is implemented in Core 0.2.0. Do not expose Bigin credentials in theme JavaScript.
 
 File intake needs private object storage, size/type verification, malware scanning, short-lived downloads, retention and per-record permissions before activation. Client portals require real authentication and record-level authorisation. Neither is simulated as an operational feature in this release.
 

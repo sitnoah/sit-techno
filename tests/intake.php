@@ -11,8 +11,10 @@ function is_email($v){return filter_var($v,FILTER_VALIDATE_EMAIL)!==false;}
 function sanitize_email($v){return filter_var($v,FILTER_SANITIZE_EMAIL);}
 function sanitize_text_field($v){return trim(strip_tags($v));}
 function sanitize_textarea_field($v){return trim(strip_tags($v));}
+function wp_json_encode($v){return json_encode($v);}
 class WP_Error {public function __construct(public $code,public $message,public $data=[]) {}}
 function is_wp_error($v){return $v instanceof WP_Error;}
+require __DIR__.'/../wordpress/plugins/sit-technology-core/includes/requests.php';
 require __DIR__.'/../wordpress/plugins/sit-technology-core/includes/intake.php';
 $count=0;
 function check($condition,$message){global $count;$count++;if(!$condition){throw new RuntimeException($message);}}

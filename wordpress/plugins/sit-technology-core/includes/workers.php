@@ -1,6 +1,7 @@
 <?php
 if (!defined('ABSPATH')) { exit; }
 function sit_core_worker(){
+    if (get_option('sit_core_schema') !== SIT_CORE_VERSION) { return; }
     global $wpdb;$outbox=sit_core_table('outbox');$requests=sit_core_table('enquiries');$rates=sit_core_table('rates');$now=gmdate('Y-m-d H:i:s');
     $wpdb->query($wpdb->prepare("DELETE FROM $rates WHERE expires_at < %s",$now));
     $s=get_option('sit_core_settings',array());
@@ -12,7 +13,7 @@ function sit_core_worker(){
             $reference=$wpdb->get_var($wpdb->prepare("SELECT reference FROM $requests WHERE id=%d",$job->enquiry_id));
             if(!$reference){$wpdb->delete($outbox,array('id'=>$job->id));continue;}
             $url=add_query_arg(array('page'=>'sit-enquiries','enquiry'=>$job->enquiry_id),admin_url('admin.php'));
-            $accepted=wp_mail($s['notify_to'],'New SIT enquiry '.$reference,"A project enquiry is ready for review.\nReference: ".$reference."\nOpen the private inbox: ".$url."\nSign in with your authorised WordPress account.");
+            $accepted=wp_mail($s['notify_to'],'New SIT request '.$reference,"A business request is ready for review.\nReference: ".$reference."\nOpen the private inbox: ".$url."\nSign in with your authorised WordPress account.");
             if($accepted){$wpdb->update($outbox,array('state'=>'accepted_by_transport','locked_until'=>null,'last_error'=>''),array('id'=>$job->id));}
             else{$attempts=(int)$wpdb->get_var($wpdb->prepare("SELECT attempts FROM $outbox WHERE id=%d",$job->id));$wpdb->update($outbox,array('state'=>$attempts>=5?'failed':'pending','locked_until'=>null,'available_at'=>gmdate('Y-m-d H:i:s',time()+min(86400,300*(2**$attempts))),'last_error'=>'Mail transport did not accept the notification.'),array('id'=>$job->id));}
         }

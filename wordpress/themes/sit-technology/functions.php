@@ -1,6 +1,6 @@
 <?php
 if (!defined('ABSPATH')) { exit; }
-define('SIT_THEME_VERSION', '0.2.1');
+define('SIT_THEME_VERSION', '0.3.0');
 add_action('after_setup_theme', function () {
     add_theme_support('title-tag');
     add_theme_support('post-thumbnails');
@@ -41,7 +41,7 @@ add_action('wp_enqueue_scripts', function () {
     wp_enqueue_script('sit-discovery', get_template_directory_uri() . '/assets/discovery.js', array('sit-theme'), SIT_THEME_VERSION, array('strategy'=>'defer','in_footer'=>true));
     wp_enqueue_script('sit-theme', get_template_directory_uri() . '/assets/site.js', array(), SIT_THEME_VERSION, array('strategy' => 'defer', 'in_footer' => true));
     wp_localize_script('sit-theme', 'SIT_CONFIG', array(
-        'enabled' => function_exists('sit_core_ready') && sit_core_ready(),
+        'enabled' => defined('SIT_CORE_VERSION') && version_compare(SIT_CORE_VERSION, '0.2.0', '>=') && function_exists('sit_core_ready') && sit_core_ready(),
         'endpoint' => rest_url('sit/v1/enquiries'),
         'tokenEndpoint' => rest_url('sit/v1/enquiry-token'),
     ));

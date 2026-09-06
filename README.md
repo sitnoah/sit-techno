@@ -6,8 +6,8 @@ A UK-headquartered technology consultancy with engineering talent in Africa, inc
 
 ## Packages
 
-- **SIT Technology theme 0.2.1:** 25 public pages, responsive navigation and search, nine services, eight-sector explorer, AI project planner, technology toolkit, delivery assurance and printable capabilities.
-- **SIT Core 0.1.0:** configurable private project enquiries, staff inbox, assignment/status, lifecycle events, notification outbox, retention and privacy hooks.
+- **SIT Technology theme 0.3.0:** 25 public pages, responsive navigation and search, nine services, eight-sector explorer, AI project planner, technology toolkit, delivery assurance and printable capabilities.
+- **SIT Core 0.2.0:** four typed public request journeys, a private staff desk with type/status/owner filters, controlled transitions, versioned assignment updates, audit events, notification outbox, retention and privacy hooks.
 
 The static preview form is a demonstration. Live WordPress enquiries are disabled until configured. The theme works without Core. This build does not yet replace all scheduling, recruitment or administrative workflows; see the migration plan.
 
@@ -23,13 +23,14 @@ python3 scripts/package-wordpress.py /absolute/output/path
 
 Upload the theme ZIP through **Appearance → Themes**, and the separate Core ZIP through **Plugins**. Do not upload the source archive as a theme. Read the staging checklist before activation on a live website.
 
-To edit the source content, update `scripts/author.py` or `scripts/redesign.py`, run `python3 scripts/author.py`, then rebuild the preview. WordPress editorial changes do not automatically sync back to source.
+To edit the source content, update `scripts/author.py`, `scripts/redesign.py` or `scripts/request_form.py`, run `python3 scripts/author.py`, then rebuild the preview. WordPress editorial changes do not automatically sync back to source.
 
 ## Documentation
 
 - [Architecture](docs/architecture.md)
 - [Feature inventory](docs/implementation-status.md)
 - [WordPress migration blueprint](docs/wordpress-migration-blueprint.md)
+- [Request workflows](docs/request-workflows.md)
 - [Installation and staging](docs/installation.md)
 - [Verification record](docs/verification.md)
 - [Brand palette](docs/branding.md)

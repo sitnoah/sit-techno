@@ -8,9 +8,9 @@ Public Team profiles and case studies are editorial content. Staff login account
 
 | Module | Responsibilities | Current state |
 |---|---|---|
-| SIT Technology theme | 25 public pages, responsive design, discovery tools, project form | Implemented; theme 0.2.1 |
-| SIT Core | Private enquiry intake/inbox, assignment, state changes, events, durable notifications and retention | Implemented first version; Core 0.1.0; full host integration pending |
-| Operations extension | Consultation, software brief and team request types; request-scoped messages; scheduling state; qualification and quotes | Planned |
+| SIT Technology theme | 25 public pages, responsive design, discovery tools, project form | Implemented; theme 0.3.0 |
+| SIT Core | Four typed request journeys, filtered request desk, assignment, controlled transitions, version checks, events, durable notifications and retention | Implemented; Core 0.2.0; full host integration pending |
+| Operations extension | Request-scoped messages; confirmed scheduling state; qualification and quotes | Planned; consultation, software brief and team intake is now in Core |
 | Recruitment extension | Jobs, job applications, open talent registration, private CVs, screening and applicant communications | Planned |
 | Content extension | Structured services, sectors, technologies, team profiles, locations and permissioned case studies/testimonials | Planned; current starter Pages remain editable |
 | Integration adapters | Confirmed booking events, CRM mapping/reconciliation, opt-in newsletter delivery | Planned; external services require configuration |
@@ -31,14 +31,14 @@ Navigation: **Overview · Requests · Appointments · Talent · Organisations ·
 | Recruiter | Jobs, applications and controlled CV access |
 | Read-only reviewer | Explicitly scoped reports/records, without write privileges |
 
-Roles are proposed mappings, not privileges already installed by Core. Grant only verified business authority. Existing Core grants its enquiry capability to administrators on activation.
+Roles are proposed mappings, not privileges already installed by Core. Current request-capable staff can access all requests; assignment does not impose record-level access. Grant only verified business authority. Existing Core grants its enquiry capability to administrators on activation.
 
 ## Implementation sequence
 
 | Stage | Deliverable | Acceptance gate |
 |---|---|---|
 | 1. Foundation | Theme, private intake and a real WordPress staging installation | Theme activation, all routes, form → database → inbox → notification → privacy lifecycle verified |
-| 2. Requests | One registry for enquiry, consultation, software brief and dedicated-team request; server validation and retry keys | Every enabled public form reaches the correct queue and assignee; all denied-role and duplicate cases pass |
+| 2. Requests | Implemented in Core 0.2.0: one registry, four journeys, server validation, retry keys and protected staff desk | Local boundary/workflow tests pass; actual host activation, upgrade, concurrent transactions and delivery remain staging gates |
 | 3. Scheduling and discussion | Explicit requested/confirmed/cancelled booking state; verified provider events; one conversation per request | Duplicate/out-of-order provider events handled; no cross-request visibility; internal/client messages distinguished |
 | 4. Recruitment | Jobs, open applications, staged applicant input, protected CVs, screening and retention | Ownership, expiry, MIME/size checks, scanning and private download verified; no invented account verification |
 | 5. Editorial and evidence | Structured content, approval state, media, team/location profiles and case studies | Draft/private content cannot enter search, feeds or pages; all public claims have approved evidence |

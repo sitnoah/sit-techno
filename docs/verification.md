@@ -1,36 +1,35 @@
 # Release verification — 6 September 2026
 
-## Executed successfully
+## Theme 0.3.0 / Core 0.2.0
 
 | Check | Result |
 |---|---|
-| Preview generation | 25 content pages plus a separate 404 page |
-| Internal page links and fragment anchors | All generated references resolved |
-| Local styles, scripts and imagery | All referenced files present |
-| Semantic structural checks | One H1 per page, no duplicate IDs, all images have alt attributes, no unresolved template markers |
-| JavaScript syntax | `node --check` passed |
-| PHP syntax | All 12 theme/plugin PHP files passed PHP lint in the base release; modified theme functions passed again for 0.2.0 |
-| Intake boundary tests | 29 assertions passed in the base release against the real validation and origin/token functions, with narrow WordPress helper stubs |
-| DOM interactions | Required-field progression, service preselection, review, sample submission, reset, menu Escape behavior, disabled live mode, failed submit, successful retry and preserved idempotency key passed |
-| Discovery interactions | Expertise disclosure and focus return, keyboard tabs, safe local search, combined filters, sector fragment links, all three AI guidance paths, no planner storage and print action passed |
-| Private preview deployment | Prior release published successfully; redesigned release is packaged and published through the same private Site with deployment status checked before handoff |
+| Preview build and structural validator | 25 content pages plus 404; links, fragments, local assets, unique IDs and heading structure passed |
+| PHP syntax | All 15 theme, plugin and PHP test files passed PHP lint |
+| Base intake boundaries | 29 validation and origin/token assertions passed |
+| Typed requests and staff workflow | 59 additional assertions passed: four request types, malformed/forged fields, canonical legacy compatibility, privacy detail filtering, allowed transitions, staff/assignee authority, schema guard, stale versions and transaction failure handling |
+| Public form interactions | All four journeys, required conditional fields, type/service selection, review, irrelevant-field exclusion, switching, demo reset, disabled live mode, double-submit lock and successful idempotent retry passed |
+| Discovery interactions | Expertise disclosure, keyboard tabs, safe local search, combined service filters, sector links, three AI guidance paths, no planner storage and print action passed |
+| JavaScript and CSS | JavaScript syntax and CSS parsing checked for the shared assets and request-desk stylesheet |
+| WordPress packages | Separate theme and Core archives checked for integrity, correct install roots and matching release versions |
 
-PHP lint and boundary tests ran with the WordPress project's PHP WASM CLI, PHP **8.5.8**. The DOM tests ran with **jsdom 30.0.1**. DOM tests simulate document interactions; they are not visual browser tests.
+PHP runs use the WordPress project's PHP WASM CLI, PHP **8.5.8**. DOM tests use **jsdom 30.0.1**. PHP workflow tests execute the real update function against database fault doubles; they verify application behavior but do not establish MySQL transaction behavior. DOM tests simulate document interaction and are not visual browser tests.
 
-The Core plugin has no behavioural changes in theme 0.2.0. The existing form interactions and new discovery interactions were both executed for this redesign.
+## Deployment and hosted checks
 
-## Not verified in this environment
+The private preview is a static design demonstration. It does not run WordPress or send enquiries. Its deployment status is checked through the hosting service before handoff. Public GitHub source and its hosted Actions status are separate from the successful local checks above; a failed hosted run is not treated as a local test pass or ignored as an application result.
 
-- A complete WordPress installation with MySQL/MariaDB and InnoDB.
-- Plugin activation and database schema creation against an actual host.
-- WordPress script-data output, shortcode rendering and starter-content upgrade behavior on an installed WordPress instance.
-- Database concurrency, transactional rollback and real scheduled-event processing.
-- Actual mail-provider delivery, bounce handling and credentials.
-- Full browser/device rendering, screen-reader operation or formal accessibility conformance.
-- The GitHub Actions workflow, because the new GitHub source publication and its hosted checks are separate from the local verification recorded here.
+## Staging gates not executed here
 
-The declared minimum targets, WordPress 6.6 and PHP 8.1, have not been exercised here. The staging checklist in `installation.md` is a release gate before live client enquiries, not a claim of tests already passed.
+- Full WordPress installation, theme/plugin activation and minimum targets WordPress 6.6 / PHP 8.1.
+- MySQL/MariaDB InnoDB table creation, upgrade of an actual 0.1.0 database, repeat upgrade, row locking, concurrent retries and transactional rollback.
+- WordPress output/localisation, current theme with old Core disabled, starter-page preservation and opt-in refresh.
+- Request capability denial on real WordPress accounts, concurrent staff sessions and actual privacy export/erasure.
+- Scheduled notifications, actual provider delivery and retention cleanup on a real host.
+- Browser/device rendering, screen-reader operation, formal accessibility conformance, performance/load testing and production monitoring.
 
-## Apple-colour update — theme 0.2.1
+The acceptance checklist in [installation.md](installation.md) must be completed before live client intake. No legacy business records have been imported, and no original application has been changed.
 
-Dominant apple-yellow/orange surfaces, a recoloured original bridge asset and WordPress editor tokens were added. Page/link/asset validation and JavaScript syntax were checked. The CSS parser and representative text/background contrast checks were executed for this palette; these do not establish full accessibility or visual browser conformance. Core behavior is unchanged.
+## Earlier design releases
+
+Theme 0.2.0 added discovery tools and the consulting-site redesign. Theme 0.2.1 introduced dominant apple-yellow/orange surfaces and the recoloured original bridge artwork. Their structural, interaction, CSS and representative colour-contrast checks were recorded during implementation. Those checks did not establish browser or accessibility conformance; Core behavior was unchanged until this 0.2.0 plugin release.
