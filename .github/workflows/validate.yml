@@ -1,0 +1,20 @@
+name: Validate SIT Technology
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check preview and shared assets
+        run: |
+          python3 scripts/build-preview.py
+          python3 scripts/validate-preview.py
+          node --check wordpress/themes/sit-technology/assets/site.js
+          node --check wordpress/themes/sit-technology/assets/discovery.js
+      - name: PHP syntax and input boundaries
+        run: |
+          php --version
+          rg --files wordpress tests -g '*.php' -0 | xargs -0 -n1 php -l
+          php tests/intake.php

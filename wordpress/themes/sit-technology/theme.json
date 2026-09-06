@@ -1,0 +1,84 @@
+{
+  "version": 2,
+  "settings": {
+    "appearanceTools": true,
+    "layout": {
+      "contentSize": "760px",
+      "wideSize": "1280px"
+    },
+    "color": {
+      "palette": [
+        {
+          "slug": "apple",
+          "name": "Apple yellow",
+          "color": "#f4d63b"
+        },
+        {
+          "slug": "amber",
+          "name": "Warm orange",
+          "color": "#f2a13b"
+        },
+        {
+          "slug": "crimson",
+          "name": "Crimson",
+          "color": "#b20d2f"
+        },
+        {
+          "slug": "charcoal",
+          "name": "Charcoal",
+          "color": "#29282b"
+        },
+        {
+          "slug": "silver",
+          "name": "Silver",
+          "color": "#d7d6da"
+        },
+        {
+          "slug": "light",
+          "name": "Light yellow",
+          "color": "#fff6c7"
+        },
+        {
+          "slug": "white",
+          "name": "White",
+          "color": "#ffffff"
+        }
+      ]
+    },
+    "typography": {
+      "fontFamilies": [
+        {
+          "slug": "sans",
+          "name": "Manrope",
+          "fontFamily": "Manrope, Arial, sans-serif"
+        }
+      ],
+      "fontSizes": [
+        {
+          "slug": "body",
+          "name": "Body",
+          "size": "17px"
+        },
+        {
+          "slug": "lead",
+          "name": "Lead",
+          "size": "20px"
+        },
+        {
+          "slug": "heading",
+          "name": "Heading",
+          "size": "48px"
+        }
+      ]
+    }
+  },
+  "styles": {
+    "typography": {
+      "fontFamily": "var:preset|font-family|sans"
+    },
+    "color": {
+      "text": "#29282b",
+      "background": "#ffffff"
+    }
+  }
+}
