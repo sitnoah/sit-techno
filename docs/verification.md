@@ -38,3 +38,10 @@ Theme 0.2.0 added discovery tools and the consulting-site redesign. Theme 0.2.1 
 ## Logo replacement — theme 0.3.1
 
 Replaced the shared header/footer wordmark with the approved transparent artwork and added a matching symbol favicon. Checked all generated pages, logo references and accessible names; responsive frame dimensions and CSS syntax; modified PHP syntax; and theme archive integrity. Core 0.2.0 and request workflows are unchanged. No browser/device visual testing was performed for this asset-only update.
+
+
+## SIT Consultancy logo — theme 0.3.2
+
+The shared header/footer now use the owner-approved SIT Consultancy wordmark with matching alternative text and home-link names. Rebuilt the shared page sources and static preview; checked logo references, source image dimensions, responsive frame bounds, version consistency, every generated page’s local assets and the direct-upload ZIP structure/integrity. The background cleanup uses a white-matte image with CSS multiply blending on the existing warm surfaces.
+
+This release changes branding assets and theme version metadata only. Core 0.2.0 is unchanged. Browser/device rendering and full WordPress activation were not exercised for this update. The current runtime has no PHP executable; the sole functions.php edit changes the version string.

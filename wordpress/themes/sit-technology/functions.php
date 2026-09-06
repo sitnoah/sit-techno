@@ -1,6 +1,6 @@
 <?php
 if (!defined('ABSPATH')) { exit; }
-define('SIT_THEME_VERSION', '0.3.1');
+define('SIT_THEME_VERSION', '0.3.2');
 add_action('after_setup_theme', function () {
     add_theme_support('title-tag');
     add_theme_support('post-thumbnails');

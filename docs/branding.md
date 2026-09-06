@@ -29,3 +29,10 @@ Generated page/link/asset checks, CSS parsing and representative contrast calcul
 The approved transparent logo combines a crimson interlocking S, warm orange and apple-yellow segments, and a charcoal SIT Technology wordmark. The same original PNG is used in the header and footer. CSS frames its transparent clear space without altering the image or distorting its proportions; widths adapt for smaller screens. Home links retain accessible names and keyboard focus indicators.
 
 The browser icon displays the symbol through a square SVG viewport containing the unchanged image. WordPress uses this as a theme fallback when no site icon is set. An independently configured WordPress Site Icon remains under the administrator's control. Both assets are bundled and self-hosted; no image service is required.
+
+
+## SIT Consultancy wordmark — theme 0.3.2
+
+The owner-approved logo now reads SIT Consultancy. The shared header and footer use `assets/sit-consultancy-logo.png`, with matching image alternative text and accessible home-link names. The source generators retain this choice on rebuild. The supplied checkerboard is replaced with a clean white matte. CSS multiply blending integrates that matte with the theme’s warm surfaces; the delivered PNG is not described as transparent. The crimson, orange, apple-yellow and charcoal identity is retained. The symbol-only browser icon remains the approved interlocking S.
+
+This is a logo update; package slugs, WordPress options, page content, legal entity wording and Core workflows retain their existing identities. Installing the theme update changes the shared logo without reseeding or overwriting edited pages.

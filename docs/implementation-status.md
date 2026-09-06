@@ -1,4 +1,4 @@
-# Theme 0.3.1 / Core 0.2.0 — feature inventory
+# Theme 0.3.2 / Core 0.2.0 — feature inventory
 
 ## Implemented
 
