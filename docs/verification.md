@@ -1,5 +1,16 @@
 # Release verification — 6 September 2026
 
+## Contact and Team release — theme 0.5.0 / Core 0.4.0, 7 September 2026
+
+- 34 content routes plus 404 passed link, anchor, asset, unique-ID and heading checks. The preview and installers share authored content, CSS and JavaScript.
+- All 17 theme/plugin PHP files passed syntax checks using PHP WASM. Existing checks passed: 29 intake boundaries, 93 request/workflow checks, 10 readiness checks and 19 About-upgrade checks.
+- 46 new isolated PHP checks cover optional contact fields, stable legacy payloads, public location validation, draft suppression, escaped output, map/address-type behaviour, permissions and creation of only missing pages. These use WordPress function doubles.
+- Simulated DOM checks passed for role search/category/reset, role disclosures, Company/mobile Escape handling, region selection, demo/closed/live intake, double-submit locking, immutable retries, reset and invalid references. All existing project-form, discovery, mobile-menu and About checks passed.
+- Contact submit is disabled until JavaScript initialises; the form declares POST. Preview enquiries use no network or personal browser storage. Live form controls stay locked to the original payload during an ambiguous retry.
+- Office details are unconfirmed. No business addresses, phones, mailboxes, named employees, portraits or staff accounts were invented. Maps are external links that run only when clicked.
+
+No visual browser/device review, authenticated WordPress installation, real database write, production mail or production cache test was performed for this release. Those require the WordPress staging host. Publication of the static preview does not change `sit-consultancy.com`.
+
 ## About-page release — theme 0.4.3, 7 September 2026
 
 The live About HTML was retrieved and showed theme 0.4.2 with the original short company story and three principles. The new page uses the approved artwork and established company positioning, without invented team profiles, certifications, statistics, offices or client outcomes.

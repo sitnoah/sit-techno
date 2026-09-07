@@ -1,4 +1,4 @@
-# Theme 0.4.3 / Core 0.3.1 — feature inventory
+# Theme 0.5.0 / Core 0.4.0 — feature inventory
 
 ## Implemented
 
@@ -12,6 +12,9 @@
 | Delivery model | UK coordination, African engineering, four delivery stages, three engagement models, expandable FAQs |
 | Engagement comparison | Three detailed models: advisory, projects and dedicated teams; fit, outputs, responsibilities and commercial approach; no promised prices or availability |
 | Sample deliverables | Five original templates: discovery brief, architecture decision, roadmap, quality review and handover; readable pages, editable Markdown downloads and native print / save PDF |
+| Contact | Compact enquiry form with topic and preferred region; links to project, discovery and team journeys; three regional cards; local clocks; FAQs; retry-safe submission and confirmation reference |
+| Public office settings | Administrator-only address, address type, email, telephone, hours and visiting/accessibility fields; explicit public confirmation; escaped output; copy address; opt-in click-through directions for visiting offices; exact business addresses still awaiting owner confirmation |
+| Team | 20 labelled proposed roles across leadership, product/delivery, engineering and people/operations; combined search/category filters, results count, empty state/reset, native responsibilities disclosures and relevant expertise links; no staff identities or vacancies asserted |
 | Company | Expanded About story and branded artwork; page-section navigation; three-view keyboard-operable UK/Africa delivery explorer; four practical principles; six FAQ disclosures; company capabilities, sample documents and careers resources; honest no-vacancies state |
 | Insights | Listing plus two original editorial articles about AI engineering and project briefs |
 | AI project planner | Five required questions, three qualitative guidance paths, tailored next actions, no signup or answer storage |
@@ -19,9 +22,9 @@
 | Delivery assurance | Six practical working-standard topics; no certification claims |
 | Company capabilities | Printable company overview and native print / save-as-PDF action |
 | Request UI | Four request choices; conditional consultation, product and team fields; five optional context fields; three steps; direct review/edit controls; local plain-text brief download; type/service/goal deep links; required fields; review; consent; retry; success reference; reset; no irrelevant-field submission or edits during sending |
-| Navigation | Grouped Expertise menu, local site-search dialog, mobile disclosure menu, Escape-to-close, current-page indicator, skip link, footer links, real 404 page |
+| Navigation | Grouped Expertise and Company menus, local site-search dialog, mobile disclosure menu, Escape-to-close, current-page indicator, skip link, footer links, real 404 page |
 | Accessibility foundations | Semantic landmarks, one H1 per page, keyboard controls, labels, focus styles, live status messaging and reduced-motion support |
-| WordPress theme | Installable theme; editor styles; theme.json; editable starter Pages; custom primary menu; title/description metadata; guarded setup and opt-in refresh of SIT starter pages; four allowlisted interactive component shortcodes; allowlisted packaged-page shortcode; scoped formatting repair for existing HTML starters; shared assets |
+| WordPress theme | Installable theme; editor styles; theme.json; editable starter Pages; custom primary menu; title/description metadata; guarded setup, missing Contact/Team page creation, About-only adoption and opt-in refresh of SIT starter pages; five allowlisted interactive component shortcodes; allowlisted packaged-page shortcode; scoped formatting repair for existing HTML starters; shared assets |
 | Private intake | Strict scalar/length/enum validation, origin check, signed expiring token, honeypot, atomic rate counter, unique idempotency hash and no public enquiry retrieval |
 | Upgrade diagnostics | Separate app/schema versions; administrator-only version and readiness panel; no patch-level database update for a current installation |
 | Private request desk | Apple-gold admin header; actual status counts; type/status/owner filters; reference and organisation search; pagination; request details; eligible staff assignment; server-controlled transitions; row version comparison; transactional lifecycle events |

@@ -1,0 +1,113 @@
+/* Contact and Team — shared preview and WordPress styles. */
+.company-page{--company-paper:#fff8dd;--company-ink:#25231f;color:var(--company-ink)}
+.company-page *, .company-menu *{box-sizing:border-box}
+.company-page [hidden]{display:none!important}
+.company-page .company-section{padding-top:96px;padding-bottom:96px}
+.company-page h1{font-size:clamp(42px,4.6vw,72px);line-height:1.05;letter-spacing:-.045em;margin:22px 0 28px;font-weight:600}
+.company-page h2{font-size:clamp(30px,3.2vw,48px);line-height:1.12;letter-spacing:-.035em;font-weight:500;margin:16px 0 24px}
+.company-page h3{font-size:25px;line-height:1.2;letter-spacing:-.025em;font-weight:550;margin:14px 0}
+.company-page .lead{font-size:20px;line-height:1.6;max-width:42rem}
+.company-page .eyebrow{color:#b00a34;font-size:13px;line-height:1.5;font-weight:650;letter-spacing:.1em}
+.company-page a,.company-page button{touch-action:manipulation}
+.company-page :is(a,button,input,select,textarea,summary):focus-visible,.company-menu :is(a,summary):focus-visible{outline:3px solid #b00a34;outline-offset:5px}
+.company-page :is(input,select,textarea){font:inherit;font-size:16px;min-width:0;width:100%;color:#25231f;background:#fffcf0;border:1px solid #9d967d;border-radius:4px;padding:13px 12px;min-height:48px}
+.company-page textarea{resize:vertical}
+.company-page label{display:block;font-size:14px;line-height:1.5;font-weight:550;margin:18px 0 7px}
+.company-note,.company-page .field-hint{font-size:14px;line-height:1.55;color:#645e4c}
+.company-page .screen-reader-text,.company-page legend.screen-reader-text{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.contact-intro{background:linear-gradient(118deg,#fff7d4 0%,#f7d848 100%);border-bottom:1px solid #d8b93f;padding:72px 0 80px}
+.contact-layout{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:clamp(32px,5vw,88px);align-items:start}
+.contact-copy h1 em{color:#ad0b32;font-style:normal}
+.contact-paths{display:grid;margin:34px 0;max-width:500px}
+.contact-paths a{display:flex;justify-content:space-between;gap:24px;min-height:60px;align-items:center;border-bottom:1px solid #be9f45;font-size:16px;font-weight:550}
+.contact-expect{max-width:460px;padding-top:12px}
+.contact-expect ol{padding-left:24px;font-size:16px;line-height:1.65}
+.contact-expect li{padding:5px 0 5px 6px}
+.contact-expect>p:last-child{font-size:14px;line-height:1.5;color:#645522}
+.contact-form-card{background:#fffcf0;padding:clamp(24px,3vw,44px);border:1px solid #e4c970;border-radius:8px;box-shadow:0 18px 50px #583e0712}
+.contact-form-card h2{font-size:32px;max-width:400px}
+.contact-form-card .contact-demo-note{background:#f7edbf;border-left:3px solid #b00a34;padding:12px 16px;font-size:14px;line-height:1.5}
+.contact-fields{margin:0;padding:0;border:0;min-width:0}
+.company-page .form-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.company-page .field-hint{margin:7px 0 0}
+.company-page .consent{display:flex;align-items:flex-start;gap:12px;font-size:14px;line-height:1.6;font-weight:400;margin:22px 0}
+.company-page .consent input{width:20px;height:20px;min-height:20px;flex:none;margin-top:2px;accent-color:#b00a34}
+.company-page .consent a{text-decoration:underline;text-underline-offset:3px}
+.contact-form-card .button{width:100%;justify-content:center;min-height:52px}
+.contact-form-card #contact-edit{font-size:14px;line-height:1.5;text-align:left;text-decoration:underline}
+.company-page button:disabled{opacity:.6;cursor:not-allowed}
+.company-page .text-link{border:0;background:transparent;color:inherit;display:inline-flex;align-items:center;gap:16px;min-height:44px;padding:8px 0;font:inherit;font-size:15px;font-weight:550;cursor:pointer}
+.company-section-heading{display:grid;grid-template-columns:1.3fr 1fr;gap:50px;align-items:end;margin-bottom:44px}
+.company-section-heading>p{max-width:420px;margin:0 0 26px;line-height:1.65}
+.location-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.location-card{background:#fffcf0;border:1px solid #d9c36e;padding:28px;display:flex;flex-direction:column;min-width:0}
+.location-card-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:28px;border-bottom:1px solid #ddcf9f;padding-bottom:24px}
+.location-code{font-size:36px;letter-spacing:-.05em;font-weight:600}
+.location-card time{font-size:14px;white-space:nowrap;color:#645e4c}
+.location-card h3{font-size:28px}
+.location-details{flex:1;margin:0 0 22px;overflow-wrap:anywhere;font-size:16px;line-height:1.6}
+.location-details>address{font-style:normal;margin:12px 0 20px}
+.location-details>a{display:block;text-decoration:underline;text-underline-offset:4px;padding:6px 0}
+.location-kind{font-size:13px;text-transform:uppercase;letter-spacing:.07em;color:#645e4c}
+.location-pending{font-size:15px;line-height:1.65;color:#645e4c;background:#f8f1d8;padding:18px;margin:10px 0}
+.location-pending strong{color:#343024;font-weight:500}
+.location-actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px}
+.location-actions a{font-size:14px;min-height:44px;display:inline-flex;align-items:center}
+.company-help{background:#f3d654;border-top:1px solid #d7b941}
+.company-help>.wrap{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:70px}
+.company-faq details{border-top:1px solid #ae9238;padding:0 0 10px}
+.company-faq summary{list-style:none;display:flex;justify-content:space-between;gap:24px;cursor:pointer;padding:22px 0;font-size:18px;font-weight:550;line-height:1.4}
+.company-faq summary::-webkit-details-marker,.company-menu summary::-webkit-details-marker,.role-card summary::-webkit-details-marker{display:none}
+.company-faq details[open] summary span,.role-card details[open] summary span{transform:rotate(45deg)}
+.company-faq details p{font-size:16px;line-height:1.65;margin:0 28px 20px 0}
+.team-intro{background:#25231f;color:#fff8dd;padding:80px 0 64px;border-bottom:8px solid #f4d63b}
+.team-intro h1{color:#fff8dd;max-width:850px}
+.team-intro h1 em{color:#f4d63b;font-style:normal}
+.team-intro .eyebrow{color:#f4d63b}
+.team-intro .lead{color:#e4dbc1;max-width:660px}
+.team-intro .team-disclosure{border-left:3px solid #f4d63b;background:#343129;padding:18px 24px;font-size:14px;line-height:1.7;max-width:900px;margin-top:36px;color:#eee6ce}
+.team-disclosure strong{color:#f4d63b}
+.team-toolbar{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:22px}
+.team-toolbar>div{width:min(100%,520px)}
+.team-toolbar label{margin-top:0}
+.team-toolbar>p{font-size:14px;white-space:nowrap;margin:0 0 15px}
+.company-page .filter-chips{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 36px}
+.company-page .filter-chips button{min-height:46px;border:1px solid #a08e4f;border-radius:24px;background:transparent;padding:10px 18px;font-size:14px;color:#25231f;cursor:pointer;line-height:1.3}
+.company-page .filter-chips button[aria-pressed=true]{background:#25231f;border-color:#25231f;color:#fff8dd}
+.role-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.role-card{display:flex;flex-direction:column;padding:28px;border:1px solid #dbca85;background:#fffcf0;min-width:0}
+.role-card-top{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-bottom:30px}
+.role-monogram{width:56px;height:56px;display:grid;place-items:center;border-radius:50%;background:#f4d63b;color:#25231f;font-weight:650;font-size:19px;letter-spacing:-.04em}
+.role-mock-label{border:1px solid #cdbd88;color:#645e4c;font-size:12px;line-height:1.5;padding:4px 9px;border-radius:4px}
+.role-card .role-group{font-size:12px;color:#b00a34;text-transform:uppercase;letter-spacing:.07em;font-weight:600;margin:0 0 10px}
+.role-card h3{font-size:25px;margin:0 0 14px}
+.role-card>p:not(.role-group){font-size:16px;line-height:1.6;margin:0 0 26px;color:#645e4c}
+.role-card details{margin-top:auto;border-top:1px solid #d9cfa9;padding-top:6px}
+.role-card summary{display:flex;justify-content:space-between;gap:16px;cursor:pointer;list-style:none;min-height:48px;align-items:center;font-size:14px;font-weight:550}
+.role-card details ul{padding-left:20px;font-size:15px;line-height:1.6}
+.role-card details li{margin-bottom:12px}
+.role-card details a{display:inline-flex;align-items:center;min-height:44px;font-size:14px;gap:24px}
+.team-empty{text-align:center;padding:60px 20px;border:1px dashed #b7a156}
+.team-working{background:#f4d63b}
+.team-working .wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:64px}
+.team-working ol{list-style:none;counter-reset:work;padding:0;margin:0}
+.team-working li{counter-increment:work;position:relative;border-top:1px solid #bba12e;padding:24px 0 24px 52px}
+.team-working li:before{content:'0'counter(work);position:absolute;left:0;top:30px;color:#a90b30;font-size:14px;font-weight:600}
+.team-working li h3{margin-top:0}
+.team-working li p{margin-bottom:0;font-size:16px;line-height:1.6}
+.team-next{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:72px}
+.team-next h2{font-size:clamp(28px,2.6vw,40px)}
+.team-next p:not(.eyebrow){font-size:16px;line-height:1.7;max-width:500px}
+.team-next .button{margin-top:18px}
+.company-about-links{display:flex;flex-wrap:wrap;gap:24px 40px;padding-top:32px;padding-bottom:32px}
+.company-about-links a{min-height:44px;display:flex;align-items:center;gap:24px;font-weight:550}
+.company-menu{position:relative}
+.company-menu>summary{font:inherit;font-size:15px;font-weight:550;display:flex;gap:8px;align-items:center;cursor:pointer;list-style:none;min-height:48px;padding:6px 0}
+.company-menu-panel{position:absolute;right:0;top:100%;min-width:240px;background:#fff8dd;border:1px solid #d9c36e;box-shadow:0 15px 35px #25231f20;padding:12px;z-index:50}
+.company-menu-panel a{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:48px;font-size:15px;padding:10px 14px}
+.company-menu-panel a:hover,.company-menu-panel a[aria-current=page]{background:#f4d63b}
+@media(min-width:901px) and (max-width:1150px){.role-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.location-card{padding:20px}}
+@media(max-width:900px){.contact-layout{grid-template-columns:minmax(0,1fr);gap:36px}.contact-copy{max-width:680px}.contact-form-card{width:100%;max-width:760px}.contact-intro{padding:42px 0 48px}.company-page .company-section{padding-top:60px;padding-bottom:60px}.company-section-heading{grid-template-columns:1fr;gap:0;margin-bottom:24px}.company-section-heading>p{max-width:600px;margin-bottom:18px}.location-grid{grid-template-columns:minmax(0,1fr)}.location-card{padding:28px}.location-card-head{margin-bottom:20px}.company-help>.wrap{grid-template-columns:1fr;gap:20px}.team-intro{padding:52px 0 42px}.role-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.team-working .wrap{grid-template-columns:1fr;gap:24px}.team-next{gap:36px}.company-menu{width:100%;border-bottom:1px solid #dbca85}.company-menu>summary{min-height:56px;font-size:19px;justify-content:space-between;padding:12px 0}.company-menu-panel{position:static;box-shadow:none;border:0;border-top:1px solid #dbca85;min-width:0;width:100%;padding:8px 0 12px}.company-menu-panel a{font-size:16px;min-height:52px}}
+@media(max-width:600px){.company-page h1{font-size:42px}.company-page .lead{font-size:18px}.company-page .form-row,.role-grid,.team-next{grid-template-columns:minmax(0,1fr)}.company-page .form-row{gap:0}.company-page .company-section{padding-top:48px;padding-bottom:48px}.contact-form-card{padding:24px 20px}.contact-form-card h2{font-size:28px}.contact-paths{margin:24px 0}.contact-paths a{font-size:15px;min-height:64px}.team-toolbar{display:block}.team-toolbar>div{width:100%}.team-toolbar>p{margin:14px 0 0}.company-page .filter-chips{gap:8px}.company-page .filter-chips button{padding:10px 14px;font-size:13px}.role-card{padding:24px}.team-next>div+div{padding-top:32px;border-top:1px solid #d9c36e}.team-disclosure{padding:16px!important}.company-page .button{max-width:100%;white-space:normal}.company-page h1,.company-page h2,.company-page h3{overflow-wrap:break-word}}
+@media(prefers-reduced-motion:reduce){.company-page *,.company-menu *{scroll-behavior:auto!important;transition:none!important}}
+@media print{.contact-form-card,.company-menu,.team-toolbar,.filter-chips,.location-actions{display:none!important}.contact-layout,.location-grid,.role-grid,.team-next{display:block}.role-card,.location-card{break-inside:avoid;margin-bottom:20px}.company-page .company-section{padding:24px 0}.team-intro,.team-intro h1,.team-intro h1 em,.team-intro .lead{background:white;color:black}}

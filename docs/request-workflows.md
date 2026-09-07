@@ -1,4 +1,4 @@
-# Unified request desk — theme 0.4.0 / Core 0.3.0
+# Unified request desk — theme 0.5.0 / Core 0.4.0
 
 The public website and protected WordPress administration now share one request domain. Every new submission starts unassigned with status **New**. The staff team reviews and assigns it; no automatic qualification, quotation, meeting reservation or talent matching is implied.
 
@@ -64,3 +64,10 @@ Scheduling integration, request discussions, quotations, recruitment, protected 
 All four typed requests can include optional `audience` (500 characters), `systems` and `integrations` (600 each), `outcomes` and `constraints` (800 each). Scalar type and length checks run on the server; values are plain text and stored in canonical field order in `details`. Missing or blank optional values are omitted, preserving earlier request hashes. Unknown fields and fields for another request type remain rejected. The request-body cap is 48,000 bytes to accommodate the bounded Unicode fields.
 
 The review screen provides separate request/contact edit actions and a plain-text download with no network request. It does not save a draft in browser storage or send the request. Submission still uses the signed token and stable idempotency key. The staff desk and verified privacy export render known optional fields through the same detail mapper. These values do not enter notification emails.
+
+
+## Compact contact journey
+
+`/contact/` adds a compact general enquiry form. Name, email, organisation/individual, a 20–3,000 character message and consent are required. Topic supports general, project, procurement/NDA, partnership and careers questions. Preferred location supports no preference, United Kingdom, Liberia and Côte d’Ivoire. The fixed general-enquiry context uses `explore`, `discuss` and `flexible`; it does not claim a price or timetable. Both additional fields are optional on the server for existing clients and displayed in the staff details/privacy export when present.
+
+No topic or location promises a booking, application or automatic regional assignment. All records enter the existing request desk and notification workflow. After an ambiguous failure, retry uses the same immutable payload and key. A clearly labelled new-attempt action unlocks editing and warns that the previous enquiry may already have been saved. No personal draft survives a page reload.

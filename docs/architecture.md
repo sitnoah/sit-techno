@@ -119,3 +119,12 @@ The site-facing identity is SIT Consultancy. Theme/plugin directory slugs remain
 `includes/rendering.php` isolates `wpautop` suppression to recognised SIT Pages while retaining the normal content pipeline, password gates and other filters. It restores the filter after rendering, including exceptional paths. Ordinary pages and posts are unaffected. Starter setup now stores an allowlisted `sit_page` shortcode for new/refreshed layouts; unchanged legacy HTML remains editable and renders without automatic paragraph insertion. The request form is appended once for legacy pages and included once by packaged-page rendering.
 
 Core 0.3.1 introduces `SIT_CORE_SCHEMA_VERSION = 0.3.0`. Database guards and upgrades use that constant, while software assets use `SIT_CORE_VERSION`. Updating a patch does not invalidate schema readiness. Settings includes a capability-protected installation/readiness panel.
+
+
+## Contact and Team module — 0.5.0 / Core 0.4.0
+
+`company_pages.py` authors the two pages and an allowlisted location component. The same assets serve both runtimes. The static preview resolves office markers to pending-address notices. WordPress resolves them through `sit_core_public_locations()`, which exposes only confirmed and validated public fields from the `sit_core_locations` option. Administrator-only settings use capability and nonce checks; all rendered text, attributes and links are escaped. There is no map embed or separate contact-message store.
+
+The contact form sends an `enquiry` to the existing guarded endpoint. Optional allowlisted `contact_region` and `contact_topic` values enter the existing canonical details JSON, staff desk and privacy export. Original clients without these keys retain their payload hashes. Readiness additionally requires Core 0.4.0 for this form. Ambiguous retries retain the exact original payload and idempotency key; no browser draft is persisted.
+
+The Team directory is public illustrative content, not a staff database or recruiting system. Its 20 role profiles are all labelled mockups. Filters run locally. The setup action creates only missing Contact/Team pages with packaged shortcodes and never changes homepage settings or existing content.

@@ -18,6 +18,7 @@
     } else {
       background.forEach(element => element.removeAttribute('inert'));
       background.clear();
+      nav.querySelectorAll('details[open]').forEach(details => details.open = false);
       const submenu = nav.querySelector('#expertise-menu');
       if (submenu) submenu.hidden = true;
       nav.querySelector('.expertise-toggle')?.setAttribute('aria-expanded', 'false');
@@ -30,8 +31,8 @@
     if (!nav?.classList.contains('is-open')) return;
     if (e.key === 'Escape') { e.preventDefault(); closeMenu(); toggle?.focus(); }
     if (e.key === 'Tab') {
-      const controls = [toggle, ...nav.querySelectorAll('a[href],button,input,select,textarea,[tabindex]')]
-        .filter(element => element && !element.disabled && element.tabIndex >= 0 && !element.closest('[hidden],[inert]'));
+      const controls = [toggle, ...nav.querySelectorAll('a[href],button,input,select,textarea,summary,[tabindex]')]
+        .filter(element => element && !element.disabled && element.tabIndex >= 0 && !element.closest('[hidden],[inert]') && (!element.closest('details:not([open])') || element.matches('summary')));
       const first = controls[0], last = controls[controls.length - 1];
       if (e.shiftKey && (document.activeElement === first || !controls.includes(document.activeElement))) {
         e.preventDefault(); last?.focus();

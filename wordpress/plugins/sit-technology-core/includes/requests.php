@@ -8,7 +8,10 @@ function sit_core_request_types() {
 // Field order is deliberate: it makes retries independent of incoming JSON key order.
 function sit_core_request_fields($type) {
     $fields = array(
-        'enquiry'=>array(),
+        'enquiry'=>array(
+            'contact_region'=>array('label'=>'Preferred location', 'optional'=>true, 'options'=>array('any'=>'No preference','uk'=>'United Kingdom','liberia'=>'Liberia','cote-divoire'=>'Côte d’Ivoire')),
+            'contact_topic'=>array('label'=>'Enquiry topic', 'optional'=>true, 'options'=>array('general'=>'General enquiry','project'=>'Project question','procurement'=>'Procurement / NDA','partnership'=>'Partnership','careers'=>'Careers question')),
+        ),
         'consultation'=>array(
             'contact_format'=>array('label'=>'Preferred conversation', 'options'=>array('video'=>'Video call','phone'=>'Phone call','email'=>'Email')),
             'timezone'=>array('label'=>'Your time zone', 'max'=>80, 'min'=>2),

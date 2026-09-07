@@ -13,6 +13,7 @@ jobs:
           python3 scripts/validate-preview.py
           node --check wordpress/themes/sit-technology/assets/site.js
           node --check wordpress/themes/sit-technology/assets/discovery.js
+          node --check wordpress/themes/sit-technology/assets/company.js
       - name: PHP syntax and input boundaries
         run: |
           php --version
@@ -20,6 +21,7 @@ jobs:
           php tests/requests.php
           php tests/readiness.php
           php tests/about-upgrade.php
+          php tests/company.php
       - name: WordPress layout parity
         run: |
           curl --fail --location --retry 2 https://wordpress.org/wordpress-7.1.zip -o "$RUNNER_TEMP/sit-wordpress.zip"
@@ -36,3 +38,4 @@ jobs:
           SIT_TEST_MODULES="$RUNNER_TEMP/sit-validation/node_modules" node tests/discovery.cjs
           SIT_TEST_MODULES="$RUNNER_TEMP/sit-validation/node_modules" node tests/mobile-menu.cjs
           SIT_TEST_MODULES="$RUNNER_TEMP/sit-validation/node_modules" node tests/about.cjs
+          SIT_TEST_MODULES="$RUNNER_TEMP/sit-validation/node_modules" node tests/company.cjs

@@ -11,10 +11,11 @@ def resolve(s):
  s=re.sub(r'\[sit_component name="([a-z-]+)"\]',lambda m:(theme/'content/components'/f'{m[1]}.html').read_text(),s)
  s=re.sub(r'\{\{url:(.*?)\}\}',lambda m:route(m[1]),s)
  s=re.sub(r'\{\{asset:(.*?)\}\}',lambda m:'/assets/'+m[1],s)
+ s=re.sub(r'\{\{office:(uk|liberia|cote-divoire)\}\}', '<p class="location-pending"><strong>Address details awaiting confirmation.</strong><br>Please contact us before planning a visit.</p>', s)
  return s.replace('{{year}}',str(datetime.now(timezone.utc).year))
 def document(title,description,body):
- styles=''.join(f'<link rel="stylesheet" href="/assets/{name}.css?v=0.4.3">' for name in ['site','redesign','consultancy','mobile','about'])
- scripts=''.join(f'<script src="/assets/{name}.js?v=0.4.3" defer></script>' for name in ['site','discovery'])
+ styles=''.join(f'<link rel="stylesheet" href="/assets/{name}.css?v=0.5.0">' for name in ['site','redesign','consultancy','mobile','about','company'])
+ scripts=''.join(f'<script src="/assets/{name}.js?v=0.5.0" defer></script>' for name in ['site','discovery','company'])
  return '<!doctype html>\n<html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>'+html.escape(title)+' | SIT Consultancy</title><meta name="description" content="'+html.escape(description,quote=True)+'"><meta name="theme-color" content="#f4d63b"><link rel="icon" href="/assets/sit-technology-icon.svg" type="image/svg+xml">'+styles+scripts+'</head><body>'+resolve(header)+'<main id="main">'+resolve(body)+'</main>'+resolve(footer)+'</body></html>'
 for slug,p in source.items():
  dest=out/slug/'index.html';dest.parent.mkdir(parents=True,exist_ok=True);dest.write_text(document(p['title'],p['description'],p['html']))

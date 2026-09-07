@@ -2,7 +2,7 @@
 /**
  * Plugin Name: SIT Technology Core
  * Description: Private business requests, validation, administration, audit events and a notification outbox for SIT Technology.
- * Version: 0.3.1
+ * Version: 0.4.0
  * Requires at least: 6.6
  * Requires PHP: 8.1
  * Author: SIT Technology
@@ -10,7 +10,7 @@
  * Text Domain: sit-technology-core
  */
 if (!defined('ABSPATH')) { exit; }
-define('SIT_CORE_VERSION', '0.3.1');
+define('SIT_CORE_VERSION', '0.4.0');
 // Advance only when database structure changes; patch releases keep intake running.
 define('SIT_CORE_SCHEMA_VERSION', '0.3.0');
 require_once __DIR__ . '/includes/storage.php';
@@ -19,6 +19,7 @@ require_once __DIR__ . '/includes/intake.php';
 require_once __DIR__ . '/includes/admin.php';
 require_once __DIR__ . '/includes/workers.php';
 require_once __DIR__ . '/includes/privacy.php';
+require_once __DIR__ . '/includes/locations.php';
 register_activation_hook(__FILE__, 'sit_core_activate');
 register_deactivation_hook(__FILE__, function () { wp_clear_scheduled_hook('sit_core_tick'); });
 add_filter('cron_schedules', function ($s) { $s['sit_five_minutes'] = array('interval' => 300, 'display' => 'Every five minutes'); return $s; });

@@ -1,6 +1,6 @@
 <?php
 // Isolated checks for the explicit About-only migration. No live WordPress writes.
-define('ABSPATH', __DIR__); define('OBJECT', 'OBJECT'); define('SIT_THEME_VERSION', '0.4.3');
+define('ABSPATH', __DIR__); define('OBJECT', 'OBJECT'); define('SIT_THEME_VERSION', '0.5.0');
 class WP_Error { function __construct(public $code, public $message) {} }
 function is_wp_error($value) { return $value instanceof WP_Error; }
 function add_action(...$args) {}

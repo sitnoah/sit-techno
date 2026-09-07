@@ -1,5 +1,20 @@
 # WordPress installation and launch checks
 
+## Contact and Team update: theme 0.5.0 / Core 0.4.0
+
+1. Back up the site. Upload `sit-technology-core-0.4.0.zip` through **Plugins → Add New → Upload Plugin** and replace the installed SIT Core plugin. Upload `sit-technology-theme-0.5.0.zip` through **Appearance → Themes → Add New → Upload Theme** and replace the installed SIT theme.
+2. Open **Appearance → SIT Site Setup → Add Contact and Team pages**. Select **Add missing Contact and Team pages**. This publishes only missing `/contact/` and `/team/` pages and preserves all existing paths and homepage settings. If a custom page already exists, review it in the editor; setup does not replace its copy. The shortcodes for deliberate manual adoption are `[sit_page name="contact"]` and `[sit_page name="team"]`.
+3. Open **SIT Requests → Office details**. Add the verified public business address, address type, email, phone, hours and visiting/accessibility information for each country. Select its confirmation checkbox only when these details may be published. Unknown or unconfirmed addresses remain explicitly pending. A registered/correspondence address never offers a directions link. A confirmed visiting office can offer a click-through Google Maps link.
+4. Review **SIT Requests → Settings** and the privacy notice before enabling live intake. Contact enquiries require Core 0.4.0 or newer and the existing readiness checks. Location preference does not reroute email; the authorised staff desk receives all enquiries.
+5. If using a custom primary WordPress menu, add links to Contact and Team. The packaged navigation already includes both under Company, plus footer and About links.
+6. Clear the hosting/page cache. Review `/contact/` and `/team/` on desktop and mobile. Test a sample enquiry on staging, confirm its topic/region in the desk, and verify the configured mail worker separately.
+
+The Team page intentionally contains 20 **proposed role mockups**, not invented staff profiles, actual vacancies or confirmed headcount. Replace these with approved people and responsibilities before representing them as a current team. No staff accounts are created.
+
+Core 0.4.0 retains schema 0.3.0; this release uses a separate office option and optional enquiry detail fields. Older request payloads and hashes remain compatible. Installing the theme alone leaves Contact intake closed and addresses pending. Nothing is published or overwritten automatically during theme activation.
+
+The Sites preview is a separate static design publication. Its forms never send or save enquiries and its office addresses remain pending. Publishing that preview does not install these packages on `sit-consultancy.com`.
+
 ## About-page update: theme 0.4.3 / Core 0.3.1
 
 1. Back up the site, upload `sit-technology-theme-0.4.3.zip` under **Appearance → Themes → Add New → Upload Theme**, and replace the installed SIT theme. Keep Core 0.3.1 active; it is unchanged.
