@@ -55,7 +55,8 @@ check(str_contains(sit_core_detail_values((object)$clean)['Desired outcomes'],"\
 check(sit_core_validate(array_reverse($base+$context,true))===$clean,'Context key order is canonical');
 check(is_wp_error(sit_core_validate($valid+$context)), 'Untyped legacy payload cannot inject new details');
 
-define('SIT_CORE_VERSION','0.3.0');
+define('SIT_CORE_VERSION','0.3.1');
+define('SIT_CORE_SCHEMA_VERSION','0.3.0');
 $schema='0.3.0';
 function get_option($name){global $schema;return $name==='sit_core_schema'?$schema:null;}
 function user_can($id,$cap){return in_array($id,[1,2],true) && $cap==='manage_sit_enquiries';}

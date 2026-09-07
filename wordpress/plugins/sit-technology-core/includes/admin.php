@@ -24,8 +24,8 @@ function sit_core_staff() {
 }
 function sit_core_admin() {
     if (!current_user_can('manage_sit_enquiries')) { return; }
-    echo '<div class="wrap sit-desk"><div class="sit-desk-heading"><p class="sit-kicker">SIT TECHNOLOGY / WORKSPACE</p><h1>Good conversations.<br>Clear next steps.</h1><p>One place to review enquiries, consultations, projects and team requests.</p></div>';
-    if (get_option('sit_core_schema') !== SIT_CORE_VERSION) { echo '<p>The request database needs an update by a site administrator before this desk can open.</p></div>'; return; }
+    echo '<div class="wrap sit-desk"><div class="sit-desk-heading"><p class="sit-kicker">SIT CONSULTANCY / WORKSPACE</p><h1>Good conversations.<br>Clear next steps.</h1><p>One place to review enquiries, consultations, projects and team requests.</p></div>';
+    if (get_option('sit_core_schema') !== SIT_CORE_SCHEMA_VERSION) { echo '<p>The request database needs an update by a site administrator before this desk can open.</p></div>'; return; }
     if (!sit_core_ready()) { echo '<div class="notice notice-warning inline"><p>Online requests are paused. An administrator can configure intake in SIT Requests → Settings.</p></div>'; }
     global $wpdb;
     $table = sit_core_table('enquiries');
@@ -96,7 +96,7 @@ function sit_core_admin_detail($id) {
 function sit_core_update_request($id,$version,$status,$assigned,$actor) {
     global $wpdb;
     if (!user_can($actor,'manage_sit_enquiries')) { return sit_core_error('sit_forbidden','You cannot manage requests.',403); }
-    if (get_option('sit_core_schema') !== SIT_CORE_VERSION) { return sit_core_error('sit_schema','Update the request database first.',503); }
+    if (get_option('sit_core_schema') !== SIT_CORE_SCHEMA_VERSION) { return sit_core_error('sit_schema','Update the request database first.',503); }
     if (!isset(sit_core_statuses()[$status]) || ($assigned && !user_can($assigned,'manage_sit_enquiries'))) { return sit_core_error('sit_update','Invalid status or assignee.'); }
     if ($wpdb->query('START TRANSACTION') === false) { return sit_core_error('sit_storage','Changes could not be saved.',503); }
     $table = sit_core_table('enquiries');
@@ -116,9 +116,25 @@ add_action('admin_post_sit_update', function () {
     exit;
 });
 
+function sit_core_status_panel() {
+    if (!current_user_can('manage_options')) { return; }
+    $theme = defined('SIT_THEME_VERSION') ? SIT_THEME_VERSION : 'Another theme is active';
+    $schema = get_option('sit_core_schema', 'Not installed');
+    echo '<h2>Installation status</h2><table class="widefat striped"><tbody><tr><th>Core plugin</th><td>' . esc_html(SIT_CORE_VERSION) . '</td></tr><tr><th>SIT theme</th><td>' . esc_html($theme) . '</td></tr><tr><th>Request database</th><td>' . esc_html($schema) . ' / required ' . esc_html(SIT_CORE_SCHEMA_VERSION) . '</td></tr></tbody></table>';
+    $issues = sit_core_readiness_issues();
+    if (defined('SIT_THEME_VERSION') && version_compare(SIT_THEME_VERSION, '0.4.1', '<')) { $issues['theme'] = 'Install theme 0.4.1 or newer for the WordPress layout repair.'; }
+    if ($issues) {
+        echo '<h3>Items to review</h3><ul>';
+        foreach ($issues as $issue) { echo '<li>' . esc_html($issue) . '</li>'; }
+        echo '</ul>';
+    } else { echo '<p>Request intake is configured. Verify the form and mail transport on staging before accepting real enquiries.</p>'; }
+}
+
 function sit_core_settings_screen(){
     if(!current_user_can('manage_options')){return;}$s=get_option('sit_core_settings',array());
-    echo '<div class="wrap"><h1>SIT Core settings</h1><p>Configure these after reviewing the public privacy notice, hosting, access permissions and email transport. Requests are stored in private database tables. No customer data is sent to a CRM by this release.</p><form method="post" action="'.esc_url(admin_url('admin-post.php')).'">';wp_nonce_field('sit_settings');
+    echo '<div class="wrap"><h1>SIT Core settings</h1>';
+    sit_core_status_panel();
+    echo '<p>Configure these after reviewing the public privacy notice, hosting, access permissions and email transport. Requests are stored in private database tables. No customer data is sent to a CRM by this release.</p><form method="post" action="'.esc_url(admin_url('admin-post.php')).'">';wp_nonce_field('sit_settings');
     echo '<input type="hidden" name="action" value="sit_settings"><table class="form-table"><tr><th><label for="notify_to">Team notification email</label></th><td><input id="notify_to" name="notify_to" type="email" class="regular-text" required value="'.esc_attr($s['notify_to'] ?? '').'"><p class="description">Use an authorised SIT inbox. Notifications contain only the reference and a link to the private staff inbox.</p></td></tr><tr><th><label for="retention_days">Enquiry retention (days)</label></th><td><input id="retention_days" name="retention_days" type="number" min="1" max="3650" required value="'.esc_attr($s['retention_days'] ?? 90).'"><p class="description">All enquiries, associated activity and outbox records older than this are deleted, regardless of status. Export any required business records through your agreed process first.</p></td></tr><tr><th>Privacy notice</th><td><label><input type="checkbox" name="privacy_reviewed" value="1" '.checked(!empty($s['privacy_reviewed']),true,false).'> I have replaced the starter privacy copy with the reviewed notice, verified contact details and retention policy.</label></td></tr><tr><th>Live enquiries</th><td><label><input type="checkbox" name="enabled" value="1" '.checked(!empty($s['enabled']),true,false).'> Enable the public enquiry endpoint.</label></td></tr></table><button class="button button-primary">Save settings</button></form><h2>Operations</h2><p>Run WordPress scheduled events through a real scheduler every five minutes. Notification failures retry up to five times and then appear as failed in the inbox. Configure and verify your mail provider separately; wp_mail acceptance is not delivery confirmation.</p><p>CRM synchronisation, file uploads, client accounts and recruitment submissions are planned extensions, not active features.</p></div>';
 }
 add_action('admin_post_sit_settings',function(){

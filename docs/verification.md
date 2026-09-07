@@ -54,3 +54,11 @@ This release changes branding assets and theme version metadata only. Core 0.2.0
 - New sample files and page content come from the same authored source. Installer integrity and root-entry checks are run during packaging.
 
 No browser/device/assistive-technology review or full WordPress/MySQL/email integration test was performed for this release. Those remain staging gates; the private static preview never submits enquiries.
+
+## WordPress parity repair — theme 0.4.1 / Core 0.3.1
+
+The public production response loaded theme 0.4.0 and contained extra `<p>` siblings inside `.capability-editorial`, splitting arrows from block-level card links. Its cache headers reported a one-hour HTML cache. This establishes a rendering defect; it is not evidence that the user uploaded an old theme.
+
+Checks passed: 103 rendering assertions using the official WordPress 7.1 formatting, hook and shortcode functions; all 32 raw starter layouts and all 32 managed-shortcode layouts match the authored source. Checks cover preserved edits, normal-page formatting, filter restoration, allowlisting and protected form output. Ten readiness checks verify the patch does not pause a configured schema-0.3.0 installation. The previous 122 intake/workflow assertions and JavaScript journeys also pass. PHP syntax passed for 18 files.
+
+The formatting tests use real WordPress core functions with simulated post access and password-state helpers; they are not a full WordPress/MySQL or browser integration test. Live installation still requires the site's authenticated administrator session. No real enquiry was submitted and no existing data or settings were migrated during development.

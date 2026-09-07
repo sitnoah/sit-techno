@@ -3,7 +3,7 @@ from zipfile import ZipFile,ZIP_DEFLATED
 import argparse,hashlib
 root=Path(__file__).resolve().parents[1]
 p=argparse.ArgumentParser();p.add_argument('destination',type=Path);args=p.parse_args();args.destination.mkdir(parents=True,exist_ok=True)
-items=[('themes','sit-technology','sit-technology-theme-0.4.0.zip','style.css'),('plugins','sit-technology-core','sit-technology-core-0.3.0.zip','sit-technology-core.php')]
+items=[('themes','sit-technology','sit-technology-theme-0.4.1.zip','style.css'),('plugins','sit-technology-core','sit-technology-core-0.3.1.zip','sit-technology-core.php')]
 for kind,slug,name,entry in items:
  source=root/'wordpress'/kind/slug;target=args.destination/name
  with ZipFile(target,'w',ZIP_DEFLATED,compresslevel=9) as z:

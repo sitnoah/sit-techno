@@ -18,6 +18,13 @@ jobs:
           php --version
           rg --files wordpress tests -g '*.php' -0 | xargs -0 -n1 php -l
           php tests/requests.php
+          php tests/readiness.php
+      - name: WordPress layout parity
+        run: |
+          curl --fail --location --retry 2 https://wordpress.org/wordpress-7.1.zip -o "$RUNNER_TEMP/sit-wordpress.zip"
+          echo "d1ae02b5ae18428031ffc3943659fa87ab361d827f4aa804adf9276e4dc75df6  $RUNNER_TEMP/sit-wordpress.zip" | sha256sum -c -
+          unzip -q "$RUNNER_TEMP/sit-wordpress.zip" -d "$RUNNER_TEMP/sit-wordpress"
+          SIT_WP_TEST_ROOT="$RUNNER_TEMP/sit-wordpress/wordpress" php tests/wordpress-rendering.php
       - uses: actions/setup-node@v4
         with:
           node-version: '24'

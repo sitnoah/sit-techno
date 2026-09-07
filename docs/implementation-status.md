@@ -1,4 +1,4 @@
-# Theme 0.4.0 / Core 0.3.0 — feature inventory
+# Theme 0.4.1 / Core 0.3.1 — feature inventory
 
 ## Implemented
 
@@ -21,8 +21,9 @@
 | Request UI | Four request choices; conditional consultation, product and team fields; five optional context fields; three steps; direct review/edit controls; local plain-text brief download; type/service/goal deep links; required fields; review; consent; retry; success reference; reset; no irrelevant-field submission or edits during sending |
 | Navigation | Grouped Expertise menu, local site-search dialog, mobile disclosure menu, Escape-to-close, current-page indicator, skip link, footer links, real 404 page |
 | Accessibility foundations | Semantic landmarks, one H1 per page, keyboard controls, labels, focus styles, live status messaging and reduced-motion support |
-| WordPress theme | Installable theme; editor styles; theme.json; editable starter Pages; custom primary menu; title/description metadata; guarded setup and opt-in refresh of SIT starter pages; four allowlisted interactive component shortcodes; shared assets |
+| WordPress theme | Installable theme; editor styles; theme.json; editable starter Pages; custom primary menu; title/description metadata; guarded setup and opt-in refresh of SIT starter pages; four allowlisted interactive component shortcodes; allowlisted packaged-page shortcode; scoped formatting repair for existing HTML starters; shared assets |
 | Private intake | Strict scalar/length/enum validation, origin check, signed expiring token, honeypot, atomic rate counter, unique idempotency hash and no public enquiry retrieval |
+| Upgrade diagnostics | Separate app/schema versions; administrator-only version and readiness panel; no patch-level database update for a current installation |
 | Private request desk | Apple-gold admin header; actual status counts; type/status/owner filters; reference and organisation search; pagination; request details; eligible staff assignment; server-controlled transitions; row version comparison; transactional lifecycle events |
 | Notification outbox | Transactional enqueue, scheduled worker, atomic claims, retry/backoff, failed state, mail transport acceptance state |
 | Upgrade and privacy | Additive, protected schema upgrade preserving old records; intake/worker pause until current schema; type-aware export; explicit activation settings, no automatic marketing opt-in, retention cleanup, WordPress privacy exporter and eraser, data-preserving uninstall |

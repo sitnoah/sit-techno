@@ -1,6 +1,7 @@
 <?php
 if (!defined('ABSPATH')) { exit; }
-define('SIT_THEME_VERSION', '0.4.0');
+define('SIT_THEME_VERSION', '0.4.1');
+require_once __DIR__ . '/includes/rendering.php';
 add_action('after_setup_theme', function () {
     add_theme_support('title-tag');
     add_theme_support('post-thumbnails');
@@ -59,9 +60,9 @@ add_action('wp_head', function () {
 add_action('admin_menu', function () { add_theme_page('SIT Site Setup', 'SIT Site Setup', 'manage_options', 'sit-setup', 'sit_theme_setup_screen'); });
 function sit_theme_setup_screen() {
     if (!current_user_can('manage_options')) { return; }
-    echo '<div class="wrap"><h1>SIT Consultancy site setup</h1><p>Create the 32 starter pages on a fresh WordPress installation. Existing pages with matching paths are preserved. This publishes the approved starter copy and selects Home as the front page. Review the privacy page before opening enquiries.</p><p>The enquiry form is rendered by its own template, so form controls are preserved when editors update surrounding page copy. The optional Core plugin adds private enquiry management.</p><form action="' . esc_url(admin_url('admin-post.php')) . '" method="post">';
+    echo '<div class="wrap"><h1>SIT Consultancy site setup</h1><p>Create the 32 starter pages on a fresh WordPress installation. Existing pages with matching paths are preserved. This publishes the approved starter copy and selects Home as the front page. Review the privacy page before opening enquiries.</p><p>New and refreshed starter pages use a packaged design shortcode, so layouts and forms match the preview and update with the theme. Existing HTML starters keep their stored copy and receive the rendering repair automatically. The optional Core plugin adds private enquiry management.</p><form action="' . esc_url(admin_url('admin-post.php')) . '" method="post">';
     wp_nonce_field('sit_theme_seed');
-    echo '<input type="hidden" name="action" value="sit_theme_seed"><p><label><input type="checkbox" name="refresh_sit" value="1"> Apply the latest design to existing SIT starter pages. This replaces their page content; use a staging site and take a backup first. Other pages are preserved.</label></p><p><button class="button button-primary">Create starter pages</button></p></form></div>';
+    echo '<input type="hidden" name="action" value="sit_theme_seed"><p><label><input type="checkbox" name="refresh_sit" value="1"> Apply the latest design to existing SIT starter pages. This replaces their copy with the current packaged design and keeps those pages aligned with future theme updates. Back up editorial changes first. Other pages are preserved.</label></p><p><button class="button button-primary">Create starter pages</button></p></form></div>';
 }
 add_action('admin_post_sit_theme_seed', function () {
     if (!current_user_can('manage_options')) { wp_die('Forbidden', '', array('response' => 403)); }
@@ -72,8 +73,7 @@ add_action('admin_post_sit_theme_seed', function () {
         $existing = get_page_by_path($path);
         if ($existing && (empty($_POST['refresh_sit']) || !get_post_meta($existing->ID, '_sit_page', true))) { $created[$path] = $existing->ID; if (!$slug) { $home_id = $existing->ID; } continue; }
         $parts = explode('/', $path); $name = array_pop($parts); $parent = implode('/', $parts);
-        $content = $page['html'];
-        if ($slug === 'start-a-project') { $content = preg_replace('/<section class="wrap project-layout">.*$/s', '', $content); }
+        $content = '[sit_page name="' . ($slug ?: 'home') . '"]';
         if ($existing) { wp_save_post_revision($existing->ID); }
         $id = wp_insert_post(array('ID' => $existing ? $existing->ID : 0, 'post_type' => 'page', 'post_status' => 'publish', 'post_title' => $slug ? $page['title'] : 'Home', 'post_name' => $name, 'post_parent' => $created[$parent] ?? 0, 'post_content' => sit_theme_resolve($content)), true);
         if (is_wp_error($id)) { wp_die(esc_html($id->get_error_message())); }

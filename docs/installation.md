@@ -1,12 +1,26 @@
 # WordPress installation and launch checks
 
+## Rendering repair: theme 0.4.1 / Core 0.3.1
+
+The live site was already using theme 0.4.0. WordPress automatic paragraph formatting (`wpautop`) split block-level links and inserted extra grid items, causing the layout to differ from the preview. Theme 0.4.1 suspends that filter only while rendering recognised SIT starter Pages, then restores it. Existing saved copy is preserved and ordinary WordPress content keeps normal formatting.
+
+1. Take a file/database backup. Install `sit-technology-core-0.3.1.zip` through **Plugins → Add New → Upload Plugin** and replace the installed SIT Core plugin.
+2. Install `sit-technology-theme-0.4.1.zip` through **Appearance → Themes → Add New → Upload Theme** and replace the installed SIT theme.
+3. Keep the theme and plugin active. No page refresh is required to repair existing 0.4.0 HTML layouts.
+4. Clear the IONOS/hosting page cache and reload the public site. The observed live cache can retain HTML for one hour; a normal browser refresh alone may continue receiving cached output.
+5. Open **SIT Requests → Settings** and check Installation status. Core 0.3.1 uses schema 0.3.0, so an existing current database does not require another update. Older schemas still require the explicit database action. No settings are automatically enabled or replaced.
+6. Compare the six capability cards in two columns, the three engagement choices, the sample rows and nine service pages. Check the form review/download and verify it stays closed unless previously configured.
+
+New or deliberately refreshed starter pages now use `[sit_page name="home"]` (or the relevant allowlisted page name). The shortcode loads the packaged layout after WordPress text formatting, so future theme changes carry through. To adopt this for existing starters, use the explicit **Apply the latest design** option after backing up any editorial changes. This replaces their copy; it is optional for the immediate rendering repair.
+
+
 This is a first implementation, not a production-certified release. Use an isolated staging site first.
 
 ## Install the packages
 
 1. Use a single-site WordPress installation with PHP 8.1 or later and MySQL/MariaDB with InnoDB. The declared WordPress minimum is 6.6. Keep a database and file backup before changing an existing site.
-2. In **Appearance → Themes → Add New → Upload Theme**, upload `sit-technology-theme-0.4.0.zip` and activate it.
-3. In **Plugins → Add New → Upload Plugin**, upload `sit-technology-core-0.3.0.zip` and activate it. Core does not support multisite in this release.
+2. In **Appearance → Themes → Add New → Upload Theme**, upload `sit-technology-theme-0.4.1.zip` and activate it.
+3. In **Plugins → Add New → Upload Plugin**, upload `sit-technology-core-0.3.1.zip` and activate it. Core does not support multisite in this release.
 4. Open **Appearance → SIT Site Setup**. On a fresh installation, choose **Create starter pages**. This creates and publishes the starter pages and selects Home as the front page. Existing matching paths are preserved by default. To upgrade an earlier SIT starter design on staging, select **Apply the latest design to existing SIT starter pages**. This replaces content only on pages marked as SIT starters and requests a WordPress revision first. Back up any editorial changes before selecting it.
 5. In **Settings → Permalinks**, select a pretty-permalink structure such as Post name and save it. The designed navigation expects these paths. Verify all service and insight child pages.
 6. Edit content under **Pages**. The starter uses HTML sections; preserve their classes and structure when editing layout. Keep the `[sit_component ...]` shortcodes intact: they render the ambition, service, industry and AI planner controls from theme templates. The enquiry form itself is also kept in the theme template. Assign a menu under **Appearance → Menus** if you want to replace the default primary navigation.

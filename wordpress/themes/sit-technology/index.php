@@ -7,12 +7,7 @@ if (is_404()) {
     while (have_posts()) {
         the_post();
         if (is_page() && get_post_meta(get_the_ID(), '_sit_page', true)) {
-            the_content();
-            if (get_post_meta(get_the_ID(), '_sit_page', true) === 'start-a-project') {
-                $page = sit_theme_pages()['start-a-project']['html'];
-                preg_match('/<section class="wrap project-layout">.*$/s', $page, $matches);
-                echo sit_theme_resolve($matches[0] ?? '');
-            }
+            sit_theme_page_content();
         } else {
             echo '<article class="wrap section"><h1>' . esc_html(get_the_title()) . '</h1><div class="text-block">';
             the_content();
@@ -21,6 +16,6 @@ if (is_404()) {
     }
     the_posts_pagination();
 } else {
-    echo '<section class="wrap section"><h1>Welcome to SIT Technology.</h1><p>Use Appearance → SIT Site Setup to create the starter pages.</p></section>';
+    echo '<section class="wrap section"><h1>Welcome to SIT Consultancy.</h1><p>Use Appearance → SIT Site Setup to create the starter pages.</p></section>';
 }
 get_footer();

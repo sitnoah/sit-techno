@@ -78,7 +78,7 @@ function sit_core_upgrade() {
         return new WP_Error('sit_schema', 'The request schema update did not complete. Check database permissions and retry.');
     }
     if ($role = get_role('administrator')) { $role->add_cap('manage_sit_enquiries'); }
-    update_option('sit_core_schema', SIT_CORE_VERSION);
+    update_option('sit_core_schema', SIT_CORE_SCHEMA_VERSION);
     if (!wp_next_scheduled('sit_core_tick')) { wp_schedule_event(time()+300, 'sit_five_minutes', 'sit_core_tick'); }
     return true;
 }
@@ -93,7 +93,7 @@ add_action('admin_post_sit_upgrade', function () {
     exit;
 });
 add_action('admin_notices', function () {
-    if (!current_user_can('manage_options') || get_option('sit_core_schema') === SIT_CORE_VERSION) { return; }
+    if (!current_user_can('manage_options') || get_option('sit_core_schema') === SIT_CORE_SCHEMA_VERSION) { return; }
     echo '<div class="notice notice-warning"><p>SIT Requests needs a database update. Take a database backup first. Existing requests and settings are preserved; online intake is paused until the update succeeds.</p><form method="post" action="' . esc_url(admin_url('admin-post.php')) . '">';
     wp_nonce_field('sit_upgrade');
     echo '<input type="hidden" name="action" value="sit_upgrade"><p><button class="button button-primary">Update SIT request database</button></p></form></div>';

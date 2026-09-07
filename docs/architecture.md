@@ -113,3 +113,9 @@ The actual public/admin platform audit expands the required migration beyond mar
 The public search index is regenerated after the final content pass. New pages are included automatically. Optional brief context uses the existing private request details column, strict per-field limits and deterministic serialization. Local download is a plain-text Blob created only on request; no uploaded-file storage or draft database has been added.
 
 The site-facing identity is SIT Consultancy. Theme/plugin directory slugs remain stable for WordPress upgrades. This is still a classic theme with editable starter Pages, not full-site editing.
+
+## WordPress rendering boundary (0.4.1)
+
+`includes/rendering.php` isolates `wpautop` suppression to recognised SIT Pages while retaining the normal content pipeline, password gates and other filters. It restores the filter after rendering, including exceptional paths. Ordinary pages and posts are unaffected. Starter setup now stores an allowlisted `sit_page` shortcode for new/refreshed layouts; unchanged legacy HTML remains editable and renders without automatic paragraph insertion. The request form is appended once for legacy pages and included once by packaged-page rendering.
+
+Core 0.3.1 introduces `SIT_CORE_SCHEMA_VERSION = 0.3.0`. Database guards and upgrades use that constant, while software assets use `SIT_CORE_VERSION`. Updating a patch does not invalidate schema readiness. Settings includes a capability-protected installation/readiness panel.

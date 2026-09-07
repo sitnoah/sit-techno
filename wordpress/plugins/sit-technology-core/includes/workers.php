@@ -1,7 +1,7 @@
 <?php
 if (!defined('ABSPATH')) { exit; }
 function sit_core_worker(){
-    if (get_option('sit_core_schema') !== SIT_CORE_VERSION) { return; }
+    if (get_option('sit_core_schema') !== SIT_CORE_SCHEMA_VERSION) { return; }
     global $wpdb;$outbox=sit_core_table('outbox');$requests=sit_core_table('enquiries');$rates=sit_core_table('rates');$now=gmdate('Y-m-d H:i:s');
     $wpdb->query($wpdb->prepare("DELETE FROM $rates WHERE expires_at < %s",$now));
     $s=get_option('sit_core_settings',array());

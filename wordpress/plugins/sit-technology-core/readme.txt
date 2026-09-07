@@ -2,7 +2,7 @@
 Contributors: sitnoah
 Requires at least: 6.6
 Requires PHP: 8.1
-Stable tag: 0.2.0
+Stable tag: 0.3.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -17,6 +17,12 @@ This is a first implementation. Complete the supplied staging acceptance checks 
 Business records are stored in private custom database tables. No public read API exposes enquiries. WordPress privacy export and erasure hooks are provided. Retention is an explicit setting. Uninstall preserves business records. No CRM or marketing subscription is activated.
 
 == Changelog ==
+= 0.3.1 =
+Separate schema and plugin versions so patch upgrades retain readiness. Add installation/readiness diagnostics in SIT Requests → Settings. Existing 0.3.0 database and settings are preserved. Pair with theme 0.4.1 for the WordPress layout repair.
+
+= 0.3.0 =
+Optional guided brief context with strict server validation and canonical storage. Staff desk and privacy exports include the known context fields.
+
 = 0.2.0 =
 Four typed request journeys, conditional fields, filtered staff desk, controlled transitions, versioned updates and type-aware privacy export. Additive database update preserves existing records as general enquiries. Update the database using the protected administrator notice after backing up; intake pauses while the schema is outdated. Pair with theme 0.3.0.
 
