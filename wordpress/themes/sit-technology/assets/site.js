@@ -2,9 +2,44 @@
   'use strict';
   const toggle = document.querySelector('.menu-toggle');
   const nav = document.querySelector('#primary-nav');
-  const closeMenu = () => { nav?.classList.remove('is-open'); toggle?.setAttribute('aria-expanded', 'false'); };
-  toggle?.addEventListener('click', () => { const open = toggle.getAttribute('aria-expanded') !== 'true'; toggle.setAttribute('aria-expanded', String(open)); nav?.classList.toggle('is-open', open); });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape' && nav?.classList.contains('is-open')) { closeMenu(); toggle?.focus(); } });
+  const background = new Set();
+  function setMenu(open) {
+    if (!nav || !toggle) return;
+    nav.classList.toggle('is-open', open);
+    toggle.setAttribute('aria-expanded', String(open));
+    if (toggle.firstChild?.nodeType === 3) toggle.firstChild.textContent = open ? 'Close ' : 'Menu ';
+    const icon = toggle.querySelector('[aria-hidden="true"]');
+    if (icon) icon.textContent = open ? '×' : '☰';
+    document.body.classList.toggle('sit-menu-open', open);
+    if (open) {
+      document.querySelectorAll('#main,.site-footer,.utility-bar,.brand,.skip-link,#wpadminbar').forEach(element => {
+        if (!element.hasAttribute('inert')) { background.add(element); element.setAttribute('inert', ''); }
+      });
+    } else {
+      background.forEach(element => element.removeAttribute('inert'));
+      background.clear();
+      const submenu = nav.querySelector('#expertise-menu');
+      if (submenu) submenu.hidden = true;
+      nav.querySelector('.expertise-toggle')?.setAttribute('aria-expanded', 'false');
+    }
+  }
+  const closeMenu = () => setMenu(false);
+  toggle?.addEventListener('click', () => setMenu(toggle.getAttribute('aria-expanded') !== 'true'));
+  document.addEventListener('sit:close-menu', closeMenu);
+  document.addEventListener('keydown', e => {
+    if (!nav?.classList.contains('is-open')) return;
+    if (e.key === 'Escape') { e.preventDefault(); closeMenu(); toggle?.focus(); }
+    if (e.key === 'Tab') {
+      const controls = [toggle, ...nav.querySelectorAll('a[href],button,input,select,textarea,[tabindex]')]
+        .filter(element => element && !element.disabled && element.tabIndex >= 0 && !element.closest('[hidden],[inert]'));
+      const first = controls[0], last = controls[controls.length - 1];
+      if (e.shiftKey && (document.activeElement === first || !controls.includes(document.activeElement))) {
+        e.preventDefault(); last?.focus();
+      } else if (!e.shiftKey && (document.activeElement === last || !controls.includes(document.activeElement))) {
+        e.preventDefault(); first?.focus();
+      }
+    }
+  });
   nav?.querySelectorAll('a').forEach(a => { if (new URL(a.href).pathname.replace(/\/$/, '') === location.pathname.replace(/\/$/, '')) a.setAttribute('aria-current', 'page'); a.addEventListener('click',closeMenu); });
   matchMedia('(min-width: 901px)').addEventListener('change', e => { if(e.matches) closeMenu(); });
   const form = document.querySelector('#project-form');

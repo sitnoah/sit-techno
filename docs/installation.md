@@ -1,11 +1,19 @@
 # WordPress installation and launch checks
 
+## Mobile update: theme 0.4.2 / Core 0.3.1
+
+Upload `sit-technology-theme-0.4.2.zip` through **Appearance → Themes → Add New → Upload Theme**, then choose to replace the existing SIT theme. Keep Core 0.3.1 active; this mobile update does not require a plugin or database change. If Core is older, use the 0.3.1 installer described below.
+
+The shared mobile stylesheet loads after the existing design in both WordPress and the preview, using the theme version to refresh asset URLs. This release includes the 0.4.1 rendering repair. There is no need to refresh starter Pages for the mobile styling; existing edited content is preserved. Clear the IONOS/hosting page cache after installation.
+
+Check portrait and landscape layouts on your devices, the menu and search, service navigation, and every step of the project form. The release checks cover source structure and simulated interactions; physical-device rendering has not been verified here.
+
 ## Rendering repair: theme 0.4.1 / Core 0.3.1
 
 The live site was already using theme 0.4.0. WordPress automatic paragraph formatting (`wpautop`) split block-level links and inserted extra grid items, causing the layout to differ from the preview. Theme 0.4.1 suspends that filter only while rendering recognised SIT starter Pages, then restores it. Existing saved copy is preserved and ordinary WordPress content keeps normal formatting.
 
 1. Take a file/database backup. Install `sit-technology-core-0.3.1.zip` through **Plugins → Add New → Upload Plugin** and replace the installed SIT Core plugin.
-2. Install `sit-technology-theme-0.4.1.zip` through **Appearance → Themes → Add New → Upload Theme** and replace the installed SIT theme.
+2. Install `sit-technology-theme-0.4.2.zip` through **Appearance → Themes → Add New → Upload Theme** and replace the installed SIT theme.
 3. Keep the theme and plugin active. No page refresh is required to repair existing 0.4.0 HTML layouts.
 4. Clear the IONOS/hosting page cache and reload the public site. The observed live cache can retain HTML for one hour; a normal browser refresh alone may continue receiving cached output.
 5. Open **SIT Requests → Settings** and check Installation status. Core 0.3.1 uses schema 0.3.0, so an existing current database does not require another update. Older schemas still require the explicit database action. No settings are automatically enabled or replaced.
@@ -19,7 +27,7 @@ This is a first implementation, not a production-certified release. Use an isola
 ## Install the packages
 
 1. Use a single-site WordPress installation with PHP 8.1 or later and MySQL/MariaDB with InnoDB. The declared WordPress minimum is 6.6. Keep a database and file backup before changing an existing site.
-2. In **Appearance → Themes → Add New → Upload Theme**, upload `sit-technology-theme-0.4.1.zip` and activate it.
+2. In **Appearance → Themes → Add New → Upload Theme**, upload `sit-technology-theme-0.4.2.zip` and activate it.
 3. In **Plugins → Add New → Upload Plugin**, upload `sit-technology-core-0.3.1.zip` and activate it. Core does not support multisite in this release.
 4. Open **Appearance → SIT Site Setup**. On a fresh installation, choose **Create starter pages**. This creates and publishes the starter pages and selects Home as the front page. Existing matching paths are preserved by default. To upgrade an earlier SIT starter design on staging, select **Apply the latest design to existing SIT starter pages**. This replaces content only on pages marked as SIT starters and requests a WordPress revision first. Back up any editorial changes before selecting it.
 5. In **Settings → Permalinks**, select a pretty-permalink structure such as Post name and save it. The designed navigation expects these paths. Verify all service and insight child pages.

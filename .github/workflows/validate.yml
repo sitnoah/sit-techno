@@ -33,3 +33,4 @@ jobs:
           npm install --prefix "$RUNNER_TEMP/sit-validation" --no-save --ignore-scripts jsdom@30.0.1
           SIT_TEST_MODULES="$RUNNER_TEMP/sit-validation/node_modules" node tests/form.cjs
           SIT_TEST_MODULES="$RUNNER_TEMP/sit-validation/node_modules" node tests/discovery.cjs
+          SIT_TEST_MODULES="$RUNNER_TEMP/sit-validation/node_modules" node tests/mobile-menu.cjs

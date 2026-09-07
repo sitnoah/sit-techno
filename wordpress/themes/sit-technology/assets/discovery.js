@@ -96,7 +96,9 @@
       previousFocus?.focus();
     }
     document.querySelectorAll('.search-open').forEach(button => button.addEventListener('click', () => {
-      previousFocus = button; closeExpertise();
+      previousFocus = button.closest('.primary-nav.is-open') ? document.querySelector('.menu-toggle') : button;
+      document.dispatchEvent(new Event('sit:close-menu'));
+      closeExpertise();
       if (typeof search.showModal === 'function') search.showModal(); else search.setAttribute('open', '');
       renderSearch(); input.focus();
     }));

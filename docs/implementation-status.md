@@ -60,3 +60,13 @@ The public source repository is `sitnoah/sit-techno`; confidential legacy audit 
 3. Replace the working privacy notice and supply verified business contact details, leadership bios and real evidence of delivery capability.
 4. Verify the complete enquiry → staff inbox → notification → retention journey, then configure the production domain and publish.
 5. Add Bigin, approved case studies and conversion measurement. Build recruitment, bid operations and portals when their processes and owners are clear.
+
+
+## Mobile release — theme 0.4.2
+
+- Tablet hero and engagement sections stack earlier; mobile capability lists, delivery stages and industry choices use one column.
+- Larger labels, 44–52 px minimum primary control targets, full-width phone actions, and more readable service and enquiry content.
+- Scroll-contained mobile navigation with a Close label, background isolation, keyboard focus containment and search focus return.
+- Viewport-bounded search, safe-area padding, narrower-screen spacing and cache-versioned shared preview assets.
+- All 32 public pages use the same mobile stylesheet as WordPress. Core stays at 0.3.1 with no database or settings changes.
+- Local source/interaction checks passed; device and production WordPress checks remain to be performed.

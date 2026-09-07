@@ -1,0 +1,177 @@
+/* SIT Consultancy 0.4.2 — shared mobile and tablet presentation. */
+@media screen and (max-width: 900px) {
+  :root { --sit-header-height: 80px; --sit-admin-height: 0px; }
+  body.admin-bar { --sit-admin-height: 32px; }
+  body.sit-menu-open { overflow: hidden; }
+  .wrap { width: calc(100% - 48px); }
+  .nav-shell { gap: 16px; }
+  .menu-toggle { min-height: 48px; min-width: 92px; justify-content: center; font-size: 14px; gap: 10px; }
+  .menu-toggle[aria-expanded="true"] { background: var(--red); color: white; }
+  .primary-nav {
+    top: 100%; gap: 0; padding: 16px 24px max(24px, env(safe-area-inset-bottom));
+    max-height: calc(100vh - var(--sit-header-height) - var(--sit-admin-height) - 40px);
+    max-height: calc(100dvh - var(--sit-header-height) - var(--sit-admin-height) - 40px);
+    overflow-y: auto; overscroll-behavior: contain; scrollbar-gutter: stable;
+  }
+  .primary-nav > .nav-link, .primary-nav li > a, .expertise-toggle {
+    min-height: 52px; padding-block: 14px; font-size: 16px; line-height: 1.5;
+  }
+  .primary-nav > .button { min-height: 52px; font-size: 16px; padding: 14px 20px; }
+  .search-open { min-height: 52px; justify-content: flex-start; }
+  .search-open:after { content: none; }
+  .search-open:has(svg):after { content: "Search SIT Consultancy"; font-size: 16px; }
+  .mega-menu { padding: 20px 16px; }
+  .mega-link { min-height: 48px; font-size: 15px; line-height: 1.5; }
+  .mega-foot { flex-wrap: wrap; gap: 12px; }
+  .mega-foot .text-link { min-height: 44px; }
+  .consultancy-hero-grid { grid-template-columns: minmax(0, 1fr); gap: 30px; padding-block: 40px; }
+  .consultancy-hero-copy { padding: 0; }
+  .consultancy-hero h1 { font-size: clamp(48px, 7.8vw, 68px); }
+  .consultancy-hero .lead { font-size: 18px; max-width: 580px; }
+  .consultancy-hero .eyebrow { font-size: 12px; letter-spacing: .08em; }
+  .consultancy-hero .hero-small { font-size: 14px; margin-top: 20px; }
+  .consultancy-hero .actions .text-link { font-size: 16px; }
+  .consultancy-art { height: 330px; border-top-left-radius: 100px; }
+  .consultancy-art > img { object-position: 60% 55%; }
+  .consultancy-art figcaption span { font-size: 12px; }
+  .engagement-choice > p:not(.eyebrow), .capability-editorial p, .sample-row p,
+  .delivery-stages p, .plain-card p, .model-card dd { font-size: 16px; }
+  .button, .text-link { min-height: 44px; }
+  .filter-chips button, .search-suggestions button { min-height: 44px; font-size: 14px; }
+  .eyebrow, .sample-type, .model-card dt, .finder-outcome { font-size: 12px; }
+  .service-section-nav { font-size: 14px; gap: 8px 24px; padding-block: 10px; }
+  .service-section-nav a { display: inline-flex; align-items: center; min-height: 44px; }
+  .form-card, .planner-form { max-width: 720px; }
+  input:not([type="checkbox"]):not([type="radio"]), textarea, select, .planner-question select {
+    font-size: 16px; min-height: 50px; max-width: 100%;
+  }
+  .choice > input, .consent input { width: 20px; height: 20px; }
+  .choice { gap: 12px; padding: 16px; min-height: 72px; }
+  .choice strong { font-size: 16px; }
+  .choice small { font-size: 14px; line-height: 1.5; }
+  .form-step > label, .form-row label, .form-step legend, .brief-builder label,
+  .planner-question label { font-size: 15px; }
+  .field-hint, .draft-note, .demo-note, .brief-builder > p { font-size: 13px; }
+  .form-step > .eyebrow, .review-list dt { font-size: 12px; }
+  .review-list dd { font-size: 16px; }
+  .footer-top .footer-link { min-height: 44px; display: flex; align-items: center; margin-top: 0; padding-block: 8px; font-size: 14px; }
+  .footer-top p { font-size: 16px; }
+  .footer-legal a { display: inline-flex; align-items: center; min-height: 44px; }
+  .consultancy-hero-grid > *, .engagement-choices > *, .capability-editorial > *,
+  .sample-showcase > *, .delivery-stages > *, .home-perspectives > *, .ai-start > *,
+  .model-comparison > *, .service-content > *, .form-row > *, .finder-grid > *,
+  .industry-explorer > *, .footer-top > * { min-width: 0; }
+  h1, h2, h3, .button, .text-link, .footer-link { overflow-wrap: break-word; }
+}
+
+@media screen and (max-width: 782px) {
+  body.admin-bar { --sit-admin-height: 46px; }
+}
+
+@media screen and (max-width: 760px) {
+  .engagement-choices, .sample-showcase, .ai-start, .home-perspectives,
+  .model-comparison, .about-story, .faq { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .engagement-choice { padding-top: 24px; }
+  .engagement-choice h3 { font-size: 28px; }
+  .engagement-choice > p:not(.eyebrow) { max-width: 540px; margin-bottom: 16px; }
+  .section-heading { display: block; margin-bottom: 32px; }
+  .section-heading > p { max-width: 540px; font-size: 16px; margin-top: 20px; }
+  .section-heading > .text-link { margin-top: 18px; }
+  .ai-principles { border-left: 0; border-top: 1px solid var(--rule); padding: 28px 0 0; }
+  .model-card h2 { min-height: 0; font-size: 32px; }
+  .model-card dl > div { min-height: 0; }
+  .next-step .wrap > div, .decision-banner { align-items: flex-start; flex-direction: column; }
+  .sample-library .sample-row { grid-template-columns: minmax(0, 1fr) 24px; }
+  .sample-library .sample-type { grid-column: 1 / -1; }
+}
+
+@media screen and (max-width: 600px) {
+  :root { --sit-header-height: 76px; }
+  body.admin-bar { --sit-admin-height: 0px; }
+  .wrap { width: calc(100% - 40px); }
+  .utility-bar .wrap { justify-content: center; }
+  .utility-bar .wrap > div { display: none; }
+  .utility-bar .wrap > span { font-size: 12px; text-align: center; }
+  .primary-nav { padding-inline: 20px; }
+  .brand { width: 164px; }
+  .section { padding-block: 48px; }
+  .consultancy-hero-grid { padding-block: 30px; gap: 28px; }
+  .consultancy-hero h1 { font-size: clamp(40px, 10.5vw, 60px); line-height: 1.06; letter-spacing: -.055em; margin-bottom: 22px; }
+  .consultancy-hero .lead { font-size: 17px; line-height: 1.7; }
+  .consultancy-hero .actions { display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; margin-top: 24px; }
+  .consultancy-hero .actions > * { justify-content: center; width: 100%; min-height: 52px; }
+  .consultancy-art { height: clamp(230px, 62vw, 300px); border-top-left-radius: 64px; }
+  .consultancy-art figcaption { inset: auto 22px 22px; }
+  .consultancy-art figcaption strong { font-size: 27px; }
+  .consultancy-art figcaption span { margin-bottom: 10px; }
+  .section-heading h2, .sample-showcase h2, .ai-start h2, .home-perspectives h2,
+  .next-step h2 { font-size: clamp(30px, 8vw, 38px); line-height: 1.16; }
+  .page-hero { padding-block: 34px 30px; margin-bottom: 28px; }
+  .page-hero h1 { font-size: clamp(34px, 9vw, 46px); line-height: 1.13; }
+  .page-hero .lead { font-size: 17px; line-height: 1.7; }
+  .capability-editorial { grid-template-columns: minmax(0, 1fr); }
+  .capability-editorial h3, .sample-row h3, .home-perspectives h3 { font-size: 26px; }
+  .capability-editorial > a { padding-block: 24px; }
+  .sample-row { padding-block: 24px; }
+  .delivery-stages { grid-template-columns: minmax(0, 1fr); gap: 24px; margin-block: 30px; }
+  .delivery-stages li { position: relative; padding: 20px 0 0 40px; }
+  .delivery-stages span { position: absolute; left: 0; top: 24px; font-size: 13px; }
+  .delivery-stages h3 { font-size: 26px; margin: 0 0 10px; }
+  .delivery-links { gap: 8px 24px; }
+  .sector-ribbon a { min-height: 56px; }
+  .next-step { padding-block: 42px; }
+  .next-step .button, .sample-showcase .button, .ai-start .button { width: 100%; justify-content: center; min-height: 52px; }
+  .service-start, .sample-actions { align-items: stretch; gap: 12px; }
+  .service-start .button, .sample-actions .button { width: 100%; justify-content: center; }
+  .service-section-nav { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px 16px; }
+  .service-aside { padding: 24px; }
+  .service-content h2 { font-size: 30px; }
+  .service-faq summary, .brief-builder summary { min-height: 44px; }
+  .finder-card, .model-card, .planner-form, .planner-result { padding: 24px 20px; }
+  .filter-chips { gap: 8px; margin-bottom: 24px; }
+  .filter-chips button { padding: 10px 13px; }
+  .industry-tabs { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .industry-tabs button { padding-block: 13px; min-height: 52px; font-size: 16px; }
+  .industry-panels { padding: 28px 22px; }
+  .industry-panels .button { width: 100%; justify-content: center; }
+  .form-card { padding: 24px 18px; border-radius: 10px; }
+  .form-progress { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; padding-bottom: 20px; }
+  .form-progress > span { font-size: 14px; line-height: 1.5; }
+  .form-progress b { display: block; font-size: 13px; margin: 4px 0 0; }
+  .form-step h2 { font-size: 28px; }
+  .form-row, .choice-grid { grid-template-columns: minmax(0, 1fr); }
+  .form-step .actions, .brief-review-actions, .planner-result .actions { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .form-step .actions .button, .brief-review-actions .button, .planner-form > .button,
+  .planner-result .button { width: 100%; font-size: 16px; min-height: 50px; justify-content: center; padding: 13px 16px; }
+  .brief-review-actions .button:last-child { grid-column: auto; }
+  .brief-builder { padding: 16px; }
+  .planner-question { gap: 12px; }
+  .planner-result h2 { font-size: 30px; }
+  .search-dialog {
+    width: calc(100% - 24px); padding: 22px 18px; margin: 12px auto;
+    max-height: calc(100vh - 24px); max-height: calc(100dvh - 24px);
+    padding-bottom: max(22px, env(safe-area-inset-bottom)); overscroll-behavior: contain;
+  }
+  .search-close { min-height: 44px; font-size: 14px; }
+  .search-dialog h2 { font-size: 28px; }
+  .search-dialog label { font-size: 15px; }
+  .search-result h3 { font-size: 22px; }
+  .search-result p { font-size: 15px; }
+  .site-footer { padding-top: 42px; }
+  .footer-top { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 20px; }
+  .footer-top h2 { font-size: 15px; margin-bottom: 8px; }
+  .footer-legal { flex-wrap: wrap; }
+}
+
+@media screen and (max-width: 380px) {
+  .wrap { width: calc(100% - 32px); }
+  .brand { width: 148px; }
+  .menu-toggle { min-width: 84px; padding-inline: 12px; }
+  .primary-nav { padding-inline: 16px; }
+  .consultancy-hero .eyebrow { letter-spacing: .04em; }
+  .consultancy-art figcaption strong { font-size: 24px; }
+  .form-card { padding-inline: 14px; }
+  .form-progress { gap: 8px; }
+  .form-progress b { font-size: 12px; }
+  .service-section-nav { column-gap: 12px; }
+}

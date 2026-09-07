@@ -1,6 +1,6 @@
 <?php
 if (!defined('ABSPATH')) { exit; }
-define('SIT_THEME_VERSION', '0.4.1');
+define('SIT_THEME_VERSION', '0.4.2');
 require_once __DIR__ . '/includes/rendering.php';
 add_action('after_setup_theme', function () {
     add_theme_support('title-tag');
@@ -9,7 +9,7 @@ add_action('after_setup_theme', function () {
     add_theme_support('align-wide');
     add_theme_support('editor-styles');
     add_theme_support('html5', array('search-form', 'gallery', 'caption', 'style', 'script'));
-    add_editor_style(array('assets/site.css', 'assets/redesign.css', 'assets/consultancy.css'));
+    add_editor_style(array('assets/site.css', 'assets/redesign.css', 'assets/consultancy.css', 'assets/mobile.css'));
     register_nav_menus(array('primary' => __('Primary navigation', 'sit-technology')));
 });
 function sit_theme_pages() {
@@ -40,6 +40,7 @@ add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style('sit-theme', get_template_directory_uri() . '/assets/site.css', array(), SIT_THEME_VERSION);
     wp_enqueue_style('sit-redesign', get_template_directory_uri() . '/assets/redesign.css', array('sit-theme'), SIT_THEME_VERSION);
     wp_enqueue_style('sit-consultancy', get_template_directory_uri() . '/assets/consultancy.css', array('sit-redesign'), SIT_THEME_VERSION);
+    wp_enqueue_style('sit-mobile', get_template_directory_uri() . '/assets/mobile.css', array('sit-consultancy'), SIT_THEME_VERSION);
     wp_enqueue_script('sit-discovery', get_template_directory_uri() . '/assets/discovery.js', array('sit-theme'), SIT_THEME_VERSION, array('strategy'=>'defer','in_footer'=>true));
     wp_enqueue_script('sit-theme', get_template_directory_uri() . '/assets/site.js', array(), SIT_THEME_VERSION, array('strategy' => 'defer', 'in_footer' => true));
     wp_localize_script('sit-theme', 'SIT_CONFIG', array(

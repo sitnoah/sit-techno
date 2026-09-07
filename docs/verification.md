@@ -62,3 +62,10 @@ The public production response loaded theme 0.4.0 and contained extra `<p>` sibl
 Checks passed: 103 rendering assertions using the official WordPress 7.1 formatting, hook and shortcode functions; all 32 raw starter layouts and all 32 managed-shortcode layouts match the authored source. Checks cover preserved edits, normal-page formatting, filter restoration, allowlisting and protected form output. Ten readiness checks verify the patch does not pause a configured schema-0.3.0 installation. The previous 122 intake/workflow assertions and JavaScript journeys also pass. PHP syntax passed for 18 files.
 
 The formatting tests use real WordPress core functions with simulated post access and password-state helpers; they are not a full WordPress/MySQL or browser integration test. Live installation still requires the site's authenticated administrator session. No real enquiry was submitted and no existing data or settings were migrated during development.
+
+
+## Mobile release — theme 0.4.2, 7 September 2026
+
+Preview validation passed for 32 content pages and the 404, including links, anchors, assets and heading structure. The existing four form journeys and discovery interactions passed. A new mobile navigation test covers background isolation, forward/reverse focus cycling, nested-menu Escape, preservation of existing inert states, search handoff, link navigation and desktop resize. All 103 WordPress formatting/hook/shortcode checks passed, retaining the 0.4.1 rendering repair. JavaScript syntax and installer integrity were checked.
+
+CSS introduces tablet, phone and narrow-phone breakpoints, 16 px form inputs and 44–52 px primary control targets. These are source-defined dimensions, not measured device results. No browser/device rendering or screen-reader conformance is claimed. The live WordPress site has not been updated through these checks; install the new theme and clear the host cache to apply it. Core 0.3.1 is unchanged.
