@@ -2,7 +2,7 @@
 /**
  * Plugin Name: SIT Technology Core
  * Description: Private business requests, validation, administration, audit events and a notification outbox for SIT Technology.
- * Version: 0.2.0
+ * Version: 0.3.0
  * Requires at least: 6.6
  * Requires PHP: 8.1
  * Author: SIT Technology
@@ -10,7 +10,7 @@
  * Text Domain: sit-technology-core
  */
 if (!defined('ABSPATH')) { exit; }
-define('SIT_CORE_VERSION', '0.2.0');
+define('SIT_CORE_VERSION', '0.3.0');
 require_once __DIR__ . '/includes/storage.php';
 require_once __DIR__ . '/includes/requests.php';
 require_once __DIR__ . '/includes/intake.php';

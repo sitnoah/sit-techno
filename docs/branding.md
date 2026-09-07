@@ -36,3 +36,7 @@ The browser icon displays the symbol through a square SVG viewport containing th
 The owner-approved logo now reads SIT Consultancy. The shared header and footer use `assets/sit-consultancy-logo.png`, with matching image alternative text and accessible home-link names. The source generators retain this choice on rebuild. The supplied checkerboard is replaced with a clean white matte. CSS multiply blending integrates that matte with the theme’s warm surfaces; the delivered PNG is not described as transparent. The crimson, orange, apple-yellow and charcoal identity is retained. The symbol-only browser icon remains the approved interlocking S.
 
 This is a logo update; package slugs, WordPress options, page content, legal entity wording and Core workflows retain their existing identities. Installing the theme update changes the shared logo without reseeding or overwriting edited pages.
+
+### Consultancy release
+
+Theme 0.4 retains the approved SIT Consultancy logo and dominant apple-yellow/orange palette. Warm ivory reading surfaces separate the hero, offers, samples and service content; crimson remains the action colour. Site titles, search and footer text now use SIT Consultancy.

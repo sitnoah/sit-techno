@@ -54,6 +54,8 @@ header='''<a class="skip-link" href="#main">Skip to content</a><header class="si
 footer='''<footer class="site-footer"><div class="wrap"><div class="footer-top"><div><a class="brand" href="{{url:}}"><img class="brand-logo" src="{{asset:sit-consultancy-logo.png}}" width="1774" height="887" alt="SIT Consultancy" decoding="async"></a><p>Technology that takes you forward.<br>UK leadership. African engineering.</p></div><div><h2>Explore</h2>'''+''.join(f'<a href="{{{{url:{s}}}}}">{n}</a>' for s,n in nav[:3])+'''</div><div><h2>Get to know us</h2>'''+''.join(f'<a href="{{{{url:{s}}}}}">{n}</a>' for s,n in [('about','About SIT'),('insights','Insights'),('careers','Careers')])+'''</div><div><h2>Start something</h2>'''+link('start-a-project','Talk about your project','text-link')+'''<p>United Kingdom<br>Liberia & across Africa</p></div></div><div class="footer-bottom"><p>© {{year}} SIT Technology. All rights reserved.</p><div><a href="{{url:privacy}}">Privacy</a><a href="{{url:accessibility}}">Accessibility</a></div><span>Built with purpose. Together.</span></div></div></footer>'''
 from redesign import apply_redesign
 pages,header,footer,components=apply_redesign(pages,services,sectors,articles,header,footer)
+from consultancy import apply_consultancy
+pages,header,footer,components=apply_consultancy(pages,services,sectors,articles,header,footer,components)
 (T/'content/pages.json').write_text(json.dumps(pages,indent=2,ensure_ascii=False))
 (T/'content/components').mkdir(exist_ok=True)
 for name,markup in components.items():(T/'content/components'/f'{name}.html').write_text(markup)

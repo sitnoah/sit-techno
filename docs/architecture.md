@@ -105,3 +105,11 @@ File intake needs private object storage, size/type verification, malware scanni
 ## Legacy replacement scope
 
 The actual public/admin platform audit expands the required migration beyond marketing and enquiries. See [wordpress-migration-blueprint.md](wordpress-migration-blueprint.md) for unified requests, scheduling, recruitment, content modules, scoped communications and cutover. No legacy business data or credentials have been imported.
+
+## Consultancy release 0.4 / Core 0.3
+
+`consultancy.py` composes the landing page, engagement comparison and richer service detail pages after the original authoring stage. `delivery_samples.py` is the canonical source for five sample pages and their editable downloads. `consultancy.css` is loaded after the base design in both the preview and WordPress editor/frontend. The resulting site has 32 public pages plus a 404.
+
+The public search index is regenerated after the final content pass. New pages are included automatically. Optional brief context uses the existing private request details column, strict per-field limits and deterministic serialization. Local download is a plain-text Blob created only on request; no uploaded-file storage or draft database has been added.
+
+The site-facing identity is SIT Consultancy. Theme/plugin directory slugs remain stable for WordPress upgrades. This is still a classic theme with editable starter Pages, not full-site editing.

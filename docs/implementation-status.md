@@ -1,22 +1,24 @@
-# Theme 0.3.2 / Core 0.2.0 — feature inventory
+# Theme 0.4.0 / Core 0.3.0 — feature inventory
 
 ## Implemented
 
 | Area | Features |
 |---|---|
 | Brand and UI | Original apple-yellow and amber glass bridge artwork; dominant yellow/orange backgrounds, crimson accents, silver details and charcoal text; responsive layouts; consistent spacing, typography and buttons; self-hosted Manrope variable font and included font license |
-| Homepage | UK–Africa positioning; three client ambition routes and interactive explorer; editorial hero; expertise rows; delivery model; AI planner; sector links; project CTA |
+| Homepage | Clear software/AI proposition; warm split hero; three engagement choices; six connected capabilities; sample-document showcase; four delivery stages; AI planner, sector and insight links |
 | Services | Strategy, software engineering, AI and automation, data and analytics, cloud and DevOps, dedicated teams, enterprise solutions, quality and security, managed services; combined keyword/category filtering with counts and reset |
-| Service details | Individual pages, capabilities, engagement explanation and preselected enquiry links; related engagement, assurance and toolkit routes |
+| Service details | Nine individual pages with specific challenges, proposed outputs, prerequisites, section navigation, FAQs, relevant sample templates and typed enquiry links |
 | Industries | Eight keyboard-operable sector panels with fragment links and related services; honest distinction between target sectors and proven experience |
 | Delivery model | UK coordination, African engineering, four delivery stages, three engagement models, expandable FAQs |
+| Engagement comparison | Three detailed models: advisory, projects and dedicated teams; fit, outputs, responsibilities and commercial approach; no promised prices or availability |
+| Sample deliverables | Five original templates: discovery brief, architecture decision, roadmap, quality review and handover; readable pages, editable Markdown downloads and native print / save PDF |
 | Company | About page, principles, UK/Liberia/Africa context, careers page with an honest no-vacancies state |
 | Insights | Listing plus two original editorial articles about AI engineering and project briefs |
 | AI project planner | Five required questions, three qualitative guidance paths, tailored next actions, no signup or answer storage |
 | Technology toolkit | Four groups of languages, frameworks and platforms; capability confirmation and no partnership implication |
 | Delivery assurance | Six practical working-standard topics; no certification claims |
 | Company capabilities | Printable company overview and native print / save-as-PDF action |
-| Request UI | Four request choices; conditional consultation, product and team fields; three steps; type/service/goal deep links; required fields; review; consent; retry; success reference; reset; no irrelevant-field submission or edits during sending |
+| Request UI | Four request choices; conditional consultation, product and team fields; five optional context fields; three steps; direct review/edit controls; local plain-text brief download; type/service/goal deep links; required fields; review; consent; retry; success reference; reset; no irrelevant-field submission or edits during sending |
 | Navigation | Grouped Expertise menu, local site-search dialog, mobile disclosure menu, Escape-to-close, current-page indicator, skip link, footer links, real 404 page |
 | Accessibility foundations | Semantic landmarks, one H1 per page, keyboard controls, labels, focus styles, live status messaging and reduced-motion support |
 | WordPress theme | Installable theme; editor styles; theme.json; editable starter Pages; custom primary menu; title/description metadata; guarded setup and opt-in refresh of SIT starter pages; four allowlisted interactive component shortcodes; shared assets |
@@ -39,7 +41,7 @@ The public source repository is `sitnoah/sit-techno`; confidential legacy audit 
 | Full Site Editing | Current theme is a classic theme with editor styling; a custom block library and FSE templates are a later enhancement. |
 | Live scheduling | Add an approved calendar provider and real availability. No decorative booking button is presented. |
 | Bigin CRM | OAuth/server credentials, mapping, durable sync queue, idempotency, retry and reconciliation. |
-| Portfolio evidence | Approved client case studies, outcome evidence, logos, references and permissions. No fabricated examples are published. |
+| Portfolio evidence | Approved client case studies, outcome evidence, logos, references and permissions. Sample templates are clearly labelled and do not stand in for client evidence. |
 | Talent recruitment | Job publishing, candidate consent, protected CV intake, screening and hiring workflow. |
 | Secure RFP uploads | Private storage, scanning, download controls and retention. |
 | Client/partner portal | Verified authentication, scoped records, project status, documents and audit trail. |

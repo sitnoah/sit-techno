@@ -24,7 +24,14 @@ function sit_core_request_fields($type) {
             'engagement_length'=>array('label'=>'Expected duration', 'options'=>array('under-3'=>'Under 3 months','3-6'=>'3–6 months','6-plus'=>'6+ months','discuss'=>'To be discussed')),
         ),
     );
-    return $fields[$type] ?? array();
+    $context = array(
+        'audience'=>array('label'=>'Intended users', 'max'=>500, 'min'=>0, 'optional'=>true),
+        'systems'=>array('label'=>'Existing systems', 'max'=>600, 'min'=>0, 'optional'=>true),
+        'integrations'=>array('label'=>'Integrations', 'max'=>600, 'min'=>0, 'optional'=>true),
+        'outcomes'=>array('label'=>'Desired outcomes', 'max'=>800, 'min'=>0, 'optional'=>true),
+        'constraints'=>array('label'=>'Delivery requirements', 'max'=>800, 'min'=>0, 'optional'=>true),
+    );
+    return array_merge($fields[$type] ?? array(), $context);
 }
 
 function sit_core_detail_values($row) {
@@ -33,6 +40,7 @@ function sit_core_detail_values($row) {
     foreach (sit_core_request_fields($row->request_type ?? 'enquiry') as $key=>$spec) {
         $value = is_array($details) ? ($details[$key] ?? '') : '';
         if (!is_string($value)) { $value = ''; }
+        if (!empty($spec['optional']) && $value === '') { continue; }
         $result[$spec['label']] = $spec['options'][$value] ?? $value;
     }
     return $result;

@@ -38,8 +38,25 @@ check(!isset(sit_core_allowed_statuses('new')['won']), 'New request cannot skip 
 check(!sit_core_can_update((object)['status'=>'reviewing','version'=>3],2,'proposal'), 'Stale version cannot overwrite work');
 check(!sit_core_can_update(null,1,'reviewing'), 'Missing record cannot update');
 
-define('SIT_CORE_VERSION','0.2.0');
-$schema='0.2.0';
+// Optional brief context is additive, bounded and visible only through known fields.
+$base = $valid + ['request_type'=>'enquiry'];
+foreach (['audience'=>500,'systems'=>600,'integrations'=>600,'outcomes'=>800,'constraints'=>800] as $field=>$max) {
+    $data = $base + [$field=>str_repeat('a',$max)];
+    $clean = sit_core_validate($data);
+    check(!is_wp_error($clean) && json_decode($clean['details'],true)[$field]===str_repeat('a',$max), 'Accept maximum '.$field);
+    $data[$field].='a'; check(is_wp_error(sit_core_validate($data)), 'Reject long '.$field);
+    foreach ([[],null,42] as $value) { $data[$field]=$value; check(is_wp_error(sit_core_validate($data)), 'Reject non-text '.$field); }
+    check(sit_core_validate($base+[$field=>'  '])===sit_core_validate($base), 'Blank context preserves old hash '.$field);
+}
+$context=['audience'=>'<b>Support staff</b>','outcomes'=>"Reduce duplicate work.\nMeasure handling steps."];
+$clean=sit_core_validate($base+$context);
+check(sit_core_detail_values((object)$clean)['Intended users']==='Support staff', 'Desk and export include sanitized context');
+check(str_contains(sit_core_detail_values((object)$clean)['Desired outcomes'],"\n"), 'Retain multiline outcome context');
+check(sit_core_validate(array_reverse($base+$context,true))===$clean,'Context key order is canonical');
+check(is_wp_error(sit_core_validate($valid+$context)), 'Untyped legacy payload cannot inject new details');
+
+define('SIT_CORE_VERSION','0.3.0');
+$schema='0.3.0';
 function get_option($name){global $schema;return $name==='sit_core_schema'?$schema:null;}
 function user_can($id,$cap){return in_array($id,[1,2],true) && $cap==='manage_sit_enquiries';}
 require __DIR__.'/../wordpress/plugins/sit-technology-core/includes/storage.php';
@@ -63,7 +80,7 @@ class RequestDB {
 $wpdb=new RequestDB();
 check(is_wp_error(sit_core_update_request(5,1,'reviewing',1,99)) && !$wpdb->commands,'Unauthorised actor rejected before database access');
 check(is_wp_error(sit_core_update_request(5,1,'reviewing',99,1)) && !$wpdb->commands,'Ineligible owner rejected before database access');
-$schema='0.1.0';check(is_wp_error(sit_core_update_request(5,1,'reviewing',1,1)) && !$wpdb->commands,'Unmigrated schema blocks writes');$schema='0.2.0';
+$schema='0.1.0';check(is_wp_error(sit_core_update_request(5,1,'reviewing',1,1)) && !$wpdb->commands,'Unmigrated schema blocks writes');$schema='0.3.0';
 check(sit_core_update_request(5,1,'reviewing',2,1)===true,'Review and assignment saved');
 check($wpdb->row->version===2 && $wpdb->row->assigned_to===2 && count($wpdb->events)===1,'Version and audit change atomically');
 check(is_wp_error(sit_core_update_request(5,1,'closed',1,1)) && $wpdb->row->status==='reviewing' && count($wpdb->events)===1,'Second staff save cannot overwrite the first');

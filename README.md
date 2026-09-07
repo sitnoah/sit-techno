@@ -1,13 +1,13 @@
-# SIT Technology — WordPress replacement
+# SIT Consultancy — WordPress replacement
 
 A UK-headquartered technology consultancy with engineering talent in Africa, including Liberia.
 
-**Ambition, engineered.** The design uses dominant apple-yellow and orange backgrounds, crimson actions, charcoal text, self-hosted Manrope typography and original glass bridge artwork.
+**Build better software. Put AI to work.** The design uses dominant apple-yellow and orange backgrounds, crimson actions, charcoal text, self-hosted Manrope typography and original glass bridge artwork.
 
 ## Packages
 
-- **SIT Technology theme 0.3.2:** 25 public pages, responsive navigation and search, nine services, eight-sector explorer, AI project planner, technology toolkit, delivery assurance and printable capabilities.
-- **SIT Core 0.2.0:** four typed public request journeys, a private staff desk with type/status/owner filters, controlled transitions, versioned assignment updates, audit events, notification outbox, retention and privacy hooks.
+- **SIT Technology theme 0.4.0:** 32 public pages, responsive navigation and search, nine services, eight-sector explorer, AI project planner, technology toolkit, delivery assurance printable capabilities, engagement comparison, five editable delivery templates and detailed service journeys.
+- **SIT Core 0.3.0:** four typed public request journeys with optional brief context and a local draft download, a private staff desk with type/status/owner filters, controlled transitions, versioned assignment updates, audit events, notification outbox, retention and privacy hooks.
 
 The static preview form is a demonstration. Live WordPress enquiries are disabled until configured. The theme works without Core. This build does not yet replace all scheduling, recruitment or administrative workflows; see the migration plan.
 
@@ -23,7 +23,7 @@ python3 scripts/package-wordpress.py /absolute/output/path
 
 Upload the theme ZIP through **Appearance → Themes**, and the separate Core ZIP through **Plugins**. Do not upload the source archive as a theme. Read the staging checklist before activation on a live website.
 
-To edit the source content, update `scripts/author.py`, `scripts/redesign.py` or `scripts/request_form.py`, run `python3 scripts/author.py`, then rebuild the preview. WordPress editorial changes do not automatically sync back to source.
+To edit the source content, update `scripts/author.py`, `scripts/redesign.py`, `scripts/consultancy.py`, `scripts/delivery_samples.py` or `scripts/request_form.py`, run `python3 scripts/author.py`, then rebuild the preview. WordPress editorial changes do not automatically sync back to source.
 
 ## Documentation
 

@@ -1,4 +1,4 @@
-# Unified request desk — theme 0.3.0 / Core 0.2.0
+# Unified request desk — theme 0.4.0 / Core 0.3.0
 
 The public website and protected WordPress administration now share one request domain. Every new submission starts unassigned with status **New**. The staff team reviews and assigns it; no automatic qualification, quotation, meeting reservation or talent matching is implied.
 
@@ -58,3 +58,9 @@ Local checks cover all four journeys, required fields, payload isolation, type s
 Actual WordPress activation, InnoDB migration/concurrency, end-to-end privacy operations and real mail delivery remain staging gates. Browser/device and assistive-technology checks have not been performed for this release.
 
 Scheduling integration, request discussions, quotations, recruitment, protected CVs, CRM, data migration and production cutover remain later milestones. See the [migration blueprint](wordpress-migration-blueprint.md).
+
+## Guided brief context — Core 0.3
+
+All four typed requests can include optional `audience` (500 characters), `systems` and `integrations` (600 each), `outcomes` and `constraints` (800 each). Scalar type and length checks run on the server; values are plain text and stored in canonical field order in `details`. Missing or blank optional values are omitted, preserving earlier request hashes. Unknown fields and fields for another request type remain rejected. The request-body cap is 48,000 bytes to accommodate the bounded Unicode fields.
+
+The review screen provides separate request/contact edit actions and a plain-text download with no network request. It does not save a draft in browser storage or send the request. Submission still uses the signed token and stable idempotency key. The staff desk and verified privacy export render known optional fields through the same detail mapper. These values do not enter notification emails.

@@ -49,7 +49,9 @@
     const fields = [['request_type','Request'],['goal','Your ambition'],['service','Area of interest']];
     const activeGroup = specific.find(group => group.dataset.requestFields === form.elements.request_type.value);
     activeGroup?.querySelectorAll('input,select,textarea').forEach(input => fields.push([input.name, activeGroup.querySelector('label[for="' + input.id + '"]').textContent]));
-    fields.push(['brief','Your challenge'],['budget','Budget'],['timeline','Ideal start'],['name','Name'],['email','Email'],['company','Organisation']);
+    fields.push(['brief','Your challenge']);
+    form.querySelectorAll('[data-brief-context]').forEach(input => { if(input.value.trim()) fields.push([input.name,form.querySelector('label[for="'+input.id+'"]').textContent]); });
+    fields.push(['budget','Budget'],['timeline','Ideal start'],['name','Name'],['email','Email'],['company','Organisation']);
     for (const [name, label] of fields) {
       const input = form.elements[name];
       let value = input.value || 'Not specified';
@@ -78,6 +80,16 @@
   }
   form.querySelectorAll('[data-next]').forEach(b => b.addEventListener('click', () => { if (!busy && validStep()) show(Math.min(3,current+1)); }));
   form.querySelectorAll('[data-back]').forEach(b => b.addEventListener('click', () => { if (!busy) show(Math.max(1,current-1)); }));
+  form.querySelectorAll('[data-edit-step]').forEach(button => button.addEventListener('click', () => { if(!busy) show(Number(button.dataset.editStep)); }));
+  document.querySelector('#download-brief')?.addEventListener('click', () => {
+    if(busy || current !== 3) return;
+    const content = 'SIT Consultancy — project brief draft\nNot submitted by this download.\n\n' + [...document.querySelectorAll('#review-list > div')].map(row => row.querySelector('dt').textContent + '\n' + row.querySelector('dd').textContent).join('\n\n');
+    const file = new Blob([content], {type:'text/plain;charset=utf-8'});
+    const link = document.createElement('a'), fileURL = URL.createObjectURL(file);
+    link.href = fileURL; link.download = 'sit-consultancy-project-brief.txt'; document.body.append(link); link.click(); link.remove();
+    setTimeout(() => URL.revokeObjectURL(fileURL), 1000);
+    msg.textContent = 'Your brief download has been prepared. The request has not been submitted.';
+  });
   form.addEventListener('submit', async e => {
     e.preventDefault(); if (busy) return;
     if (current < 3) { if (validStep()) show(current+1); return; }
@@ -88,6 +100,7 @@
       if (bad) { show(i+1); bad.reportValidity(); return; }
     }
     const payload = Object.fromEntries(new FormData(form));
+    form.querySelectorAll('[data-brief-context]').forEach(input => { if(!payload[input.name]?.trim()) delete payload[input.name]; });
     if (!live) { success('This is the design preview. Your sample request was not sent or saved. On the configured WordPress site, it creates a private request for the SIT team.'); return; }
     busy = true; syncControls(); submit.textContent = 'Sending…'; msg.textContent = ''; form.setAttribute('aria-busy','true');
     try {

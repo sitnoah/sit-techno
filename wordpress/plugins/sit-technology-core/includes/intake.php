@@ -58,10 +58,13 @@ function sit_core_validate($data) {
         $details = array();
         foreach ($specs as $field=>$spec) {
             $max = $spec['max'] ?? 40;
+            if (!empty($spec['optional']) && !array_key_exists($field, $data)) { continue; }
             $value = $data[$field] ?? null;
             if (!is_string($value) || strlen($value) > $max*4 || sit_core_text_length(trim($value)) > $max) { return sit_core_error('sit_detail', 'Please check the ' . $spec['label'] . ' field.'); }
             $value = sanitize_textarea_field(trim($value));
             if (isset($spec['options']) ? !array_key_exists($value, $spec['options']) : sit_core_text_length($value) < $spec['min']) { return sit_core_error('sit_detail', 'Please complete the ' . $spec['label'] . ' field.'); }
+            // Omit blank optional context to preserve canonical hashes for existing clients.
+            if (!empty($spec['optional']) && $value === '') { continue; }
             $details[$field] = $value;
         }
         $clean['request_type'] = $type;
@@ -89,7 +92,7 @@ function sit_core_duplicate($key, $hash) {
 }
 function sit_core_submit($request) {
     global $wpdb;
-    if (strlen($request->get_body()) > 24000) { return sit_core_error('sit_large','Please shorten your request.',413); }
+    if (strlen($request->get_body()) > 48000) { return sit_core_error('sit_large','Please shorten your request.',413); }
     if (!sit_core_rate_limit()) { return sit_core_error('sit_rate','Too many attempts. Please try again in 15 minutes.',429); }
     $data = sit_core_validate($request->get_json_params()); if (is_wp_error($data)) { return $data; }
     $key = (string)$request->get_header('idempotency-key');

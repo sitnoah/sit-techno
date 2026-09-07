@@ -145,5 +145,5 @@
     });
     document.querySelector('#ai-reset').addEventListener('click', () => { result.hidden = true; planner.hidden = false; if (side) side.hidden = false; planner.querySelector('select').focus(); });
   }
-  document.querySelectorAll('[data-print]').forEach(button => button.addEventListener('click', () => window.print()));
+  document.querySelectorAll('[data-print]').forEach(button => button.addEventListener('click', e => { e.preventDefault(); window.print(); }));
 })();

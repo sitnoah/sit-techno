@@ -45,3 +45,12 @@ Replaced the shared header/footer wordmark with the approved transparent artwork
 The shared header/footer now use the owner-approved SIT Consultancy wordmark with matching alternative text and home-link names. Rebuilt the shared page sources and static preview; checked logo references, source image dimensions, responsive frame bounds, version consistency, every generated page’s local assets and the direct-upload ZIP structure/integrity. The background cleanup uses a white-matte image with CSS multiply blending on the existing warm surfaces.
 
 This release changes branding assets and theme version metadata only. Core 0.2.0 is unchanged. Browser/device rendering and full WordPress activation were not exercised for this update. The current runtime has no PHP executable; the sole functions.php edit changes the version string.
+
+## Theme 0.4.0 / Core 0.3.0 — 7 September 2026
+
+- All 33 generated HTML documents pass the internal-link, fragment, local-asset, unique-ID and one-H1 checks.
+- JavaScript syntax and functional DOM simulations pass: four request types, optional context, direct edits, safe plain-text download, field isolation, double-submit protection, retry identity and reset; service filtering, sector deep links, search and all three AI planner paths.
+- PHP.wasm CLI (WordPress Playground package) executes 122 assertions against the real validation/workflow functions: 29 intake boundaries and 93 typed request/context/compatibility/staff workflow checks. WordPress helpers and database failures are test doubles. PHP syntax checks cover the theme, plugin and test files. The native PHP binary is unavailable in this workspace.
+- New sample files and page content come from the same authored source. Installer integrity and root-entry checks are run during packaging.
+
+No browser/device/assistive-technology review or full WordPress/MySQL/email integration test was performed for this release. Those remain staging gates; the private static preview never submits enquiries.

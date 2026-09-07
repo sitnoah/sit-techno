@@ -57,5 +57,20 @@ function fill(w){const f=w.document.querySelector('form');f.elements.goal.value=
  let switched;w.fetch=async(url,opts)=>url.includes('token')?{ok:true,json:async()=>({token:'test'})}:(switched=JSON.parse(opts.body),{ok:true,json:async()=>({reference:'SIT-TEST'})});
  f.dispatchEvent(new w.Event('submit',{bubbles:true,cancelable:true}));await new Promise(r=>setImmediate(r));assert.equal('roles' in switched,false);dom.window.close();
  dom=create(undefined,'type=invalid');assert.equal(dom.window.document.querySelector('#project-form').elements.request_type.value,'enquiry');dom.window.close();
+ // A richer brief can be edited and downloaded without a network request.
+ dom=create(live,'type=software-project');w=dom.window;d=w.document;f=d.querySelector('#project-form');
+ f.elements.audience.value='Support staff';f.elements.systems.value='Existing service platform';f.elements.integrations.value='CRM';f.elements.outcomes.value='Fewer duplicate requests';f.elements.constraints.value='<img src=x onerror=alert(1)>';
+ f=fill(w);assert.match(d.querySelector('#review-list').textContent,/Support staff/);assert.equal(d.querySelector('#review-list img'),null);
+ d.querySelector('[data-edit-step="1"]').click();assert.equal(d.querySelector('[data-step="1"]').hidden,false);assert.equal(f.elements.audience.value,'Support staff');
+ f.elements.audience.value='Support staff and customers';f.querySelector('[data-next]').click();f.querySelector('[data-step="2"] [data-next]').click();assert.match(d.querySelector('#review-list').textContent,/and customers/);
+ let savedBlob,downloadName,network=0;w.fetch=async(url,opts)=>{network++;return url.includes('token')?{ok:true,json:async()=>({token:'test'})}:{ok:true,json:async()=>({reference:'SIT-CONTEXT'})};};
+ w.URL.createObjectURL=blob=>{savedBlob=blob;return 'blob:test';};w.URL.revokeObjectURL=()=>{};
+ w.HTMLAnchorElement.prototype.click=function(){downloadName=this.download;};
+ d.querySelector('#download-brief').click();assert.equal(network,0);assert.equal(downloadName,'sit-consultancy-project-brief.txt');assert.match(savedBlob.type,/text\/plain/);
+ const downloaded=await new Promise(resolve=>{const reader=new w.FileReader();reader.onload=()=>resolve(reader.result);reader.readAsText(savedBlob);});
+ assert.match(downloaded,/Support staff and customers/);assert.match(downloaded,/Not submitted by this download/);assert.equal(w.localStorage.length,0);
+ let rich;w.fetch=async(url,opts)=>url.includes('token')?{ok:true,json:async()=>({token:'test'})}:(rich=JSON.parse(opts.body),{ok:true,json:async()=>({reference:'SIT-CONTEXT'})});
+ f.dispatchEvent(new w.Event('submit',{bubbles:true,cancelable:true}));await new Promise(r=>setImmediate(r));assert.equal(rich.audience,'Support staff and customers');assert.equal(rich.integrations,'CRM');assert.equal(rich.constraints,'<img src=x onerror=alert(1)>');
+ d.querySelector('#reset-form').click();assert.equal(f.elements.audience.value,'');dom.window.close();
  console.log('PASS: all four request journeys, conditional required fields, review, payload isolation, type switching, double-submit protection, idempotent retry, preview/reset and menu controls.');
 })().catch(e=>{console.error(e);process.exitCode=1;});
