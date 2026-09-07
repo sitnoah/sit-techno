@@ -1,4 +1,4 @@
-# Theme 0.4.1 / Core 0.3.1 — feature inventory
+# Theme 0.4.3 / Core 0.3.1 — feature inventory
 
 ## Implemented
 
@@ -12,7 +12,7 @@
 | Delivery model | UK coordination, African engineering, four delivery stages, three engagement models, expandable FAQs |
 | Engagement comparison | Three detailed models: advisory, projects and dedicated teams; fit, outputs, responsibilities and commercial approach; no promised prices or availability |
 | Sample deliverables | Five original templates: discovery brief, architecture decision, roadmap, quality review and handover; readable pages, editable Markdown downloads and native print / save PDF |
-| Company | About page, principles, UK/Liberia/Africa context, careers page with an honest no-vacancies state |
+| Company | Expanded About story and branded artwork; page-section navigation; three-view keyboard-operable UK/Africa delivery explorer; four practical principles; six FAQ disclosures; company capabilities, sample documents and careers resources; honest no-vacancies state |
 | Insights | Listing plus two original editorial articles about AI engineering and project briefs |
 | AI project planner | Five required questions, three qualitative guidance paths, tailored next actions, no signup or answer storage |
 | Technology toolkit | Four groups of languages, frameworks and platforms; capability confirmation and no partnership implication |

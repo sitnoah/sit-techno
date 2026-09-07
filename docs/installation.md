@@ -1,5 +1,16 @@
 # WordPress installation and launch checks
 
+## About-page update: theme 0.4.3 / Core 0.3.1
+
+1. Back up the site, upload `sit-technology-theme-0.4.3.zip` under **Appearance → Themes → Add New → Upload Theme**, and replace the installed SIT theme. Keep Core 0.3.1 active; it is unchanged.
+2. Open **Appearance → SIT Site Setup → Update only the About page**. If it already uses `[sit_page name="about"]`, the new page design arrives with the theme; skip to the cache step.
+3. For an older HTML starter, review the existing About copy, tick the About-only confirmation and select **Apply the new About design**. Do not use the separate whole-site starter refresh just to update About.
+4. Clear the hosting page cache. Check `/about/`, all three delivery tabs, six FAQ disclosures, resource links, and portrait/landscape layouts.
+
+The action checks administrator and page-edit permissions, a WordPress nonce, the exact About starter identity and a hash of the reviewed copy. It refuses a missing, custom, trashed or changed page. It backs up the exact previous body in private `_sit_about_design_backup` post metadata before replacing the body, and also requests a WordPress revision. A failed backup stops the update. Title, status, parent, SEO metadata, other pages, plugin settings and operational records are preserved. These checks do not substitute for a full site/database backup or WordPress staging verification.
+
+To recover prior copy, use the page's WordPress revisions where available. When revisions are disabled, an authorised site administrator can retrieve the saved `post_content` from `_sit_about_design_backup` post metadata and restore that body through the page editor. Multiple backups are retained rather than overwritten.
+
 ## Mobile update: theme 0.4.2 / Core 0.3.1
 
 Upload `sit-technology-theme-0.4.2.zip` through **Appearance → Themes → Add New → Upload Theme**, then choose to replace the existing SIT theme. Keep Core 0.3.1 active; this mobile update does not require a plugin or database change. If Core is older, use the 0.3.1 installer described below.

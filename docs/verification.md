@@ -1,5 +1,17 @@
 # Release verification — 6 September 2026
 
+## About-page release — theme 0.4.3, 7 September 2026
+
+The live About HTML was retrieved and showed theme 0.4.2 with the original short company story and three principles. The new page uses the approved artwork and established company positioning, without invented team profiles, certifications, statistics, offices or client outcomes.
+
+- 32 content routes and the 404 passed internal-link, fragment, asset, unique-ID and heading checks.
+- Only About changed in the canonical page-content map; all other page content was compared with the previous source and preserved.
+- Three delivery views, keyboard navigation, six FAQ disclosures and About resource/section links passed simulated DOM tests. Existing discovery and mobile-menu tests also passed.
+- 19 isolated PHP checks passed for the About-only action: permissions, exact target, custom/trashed/missing pages, stale content, backup failure, exact prior-copy preservation, body-only update, already-managed no-op and save failure. Modified PHP files passed syntax checks.
+- The About stylesheet parsed successfully. The design has desktop, tablet, phone and print layouts; physical-device rendering and assistive-technology conformance were not tested.
+
+The checks use simulated interactions and WordPress function doubles, not an authenticated live installation. Live About replacement, database backup/revision behaviour and cache clearance still require staging/host verification. No production WordPress content was changed by this build. Core 0.3.1 is unchanged.
+
 ## Theme 0.3.0 / Core 0.2.0
 
 | Check | Result |

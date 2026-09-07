@@ -19,6 +19,7 @@ jobs:
           rg --files wordpress tests -g '*.php' -0 | xargs -0 -n1 php -l
           php tests/requests.php
           php tests/readiness.php
+          php tests/about-upgrade.php
       - name: WordPress layout parity
         run: |
           curl --fail --location --retry 2 https://wordpress.org/wordpress-7.1.zip -o "$RUNNER_TEMP/sit-wordpress.zip"
@@ -34,3 +35,4 @@ jobs:
           SIT_TEST_MODULES="$RUNNER_TEMP/sit-validation/node_modules" node tests/form.cjs
           SIT_TEST_MODULES="$RUNNER_TEMP/sit-validation/node_modules" node tests/discovery.cjs
           SIT_TEST_MODULES="$RUNNER_TEMP/sit-validation/node_modules" node tests/mobile-menu.cjs
+          SIT_TEST_MODULES="$RUNNER_TEMP/sit-validation/node_modules" node tests/about.cjs
